@@ -14,7 +14,13 @@ class CreateKhosTable extends Migration
     public function up()
     {
         Schema::create('kho', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
+            $table->string('ten');
+            $table->smallInteger('id_nhan_vien_quan_ly')->unsigned();
+            $table->float('dien_tich')->unsigned();
+            $table->string('dia_chi');
+            $table->string('so_dien_thoai');
+            $table->tinyInteger('da_xoa')->unsigned();
             $table->timestamps();
         });
     }

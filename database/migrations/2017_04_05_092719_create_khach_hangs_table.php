@@ -14,7 +14,15 @@ class CreateKhachHangsTable extends Migration
     public function up()
     {
         Schema::create('khach_hang', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
+            $table->string('ho_ten');
+            $table->string('ten_dang_nhap');
+            $table->string('mat_khau');
+            $table->string('dia_chi');
+            $table->string('email');
+            $table->string('so_dien_thoai');
+            $table->bigInteger('cong_no');
+            $table->tinyInteger('da_xoa')->unsigned();
             $table->timestamps();
         });
     }
