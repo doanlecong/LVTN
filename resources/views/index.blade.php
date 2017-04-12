@@ -152,7 +152,7 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    <!--<li class="active">
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
@@ -171,7 +171,9 @@
                         <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo">
+                            <i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i>
+                        </a>
                         <ul id="demo" class="collapse">
                             <li>
                                 <a href="#">Dropdown Item</a>
@@ -186,7 +188,8 @@
                     </li>
                     <li>
                         <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-                    </li>
+                    </li>-->
+                    @yield('left_nav')
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -196,7 +199,7 @@
 
             <div class="container-fluid">
 
-                <!-- Page Heading -->
+                <!--                
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
@@ -209,7 +212,7 @@
                         </ol>
                     </div>
                 </div>
-                <!-- /.row -->
+                
 
                 <div class="row">
                     <div class="col-lg-12">
@@ -219,7 +222,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
+               
 
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
@@ -311,7 +314,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
+                
 
                 <div class="row">
                     <div class="col-lg-12">
@@ -325,7 +328,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
+                
 
                 <div class="row">
                     <div class="col-lg-4">
@@ -461,11 +464,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- /.row -->
-
+                </div>-->
+                @yield('content')
             </div>
-            @yield('content')
+            
             <!-- /.container-fluid -->
 
         </div>
