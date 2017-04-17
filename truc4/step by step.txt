@@ -1,0 +1,167 @@
+CONFIG DATABASE CONNECTION
+
+.env
+DB_DATABASE=test
+
+DB_USERNAME=truc
+
+DB_PASSWORD=123
+
+
+
+SET DEFAULT STRING LENGTH = 191
+
+use Illuminate\Support\Facades\Schema;
+
+	public function boot() {
+		Schema::defaultStringLength(191);
+
+
+
+CREATE MIGRATION
+
+php artisan make:migration create_nhan_vien_table --create=nhan_vien
+php artisan make:migration create_nha_cung_cap_table --create=nha_cung_cap
+php artisan make:migration create_khach_hang_table --create=khach_hang
+
+php artisan make:migration create_kho_table --create=kho
+php artisan make:migration create_loai_soi_table --create=loai_soi
+php artisan make:migration create_loai_vai_table --create=loai_vai
+php artisan make:migration create_loai_vai_loai_soi_table --create=loai_vai_loai_soi
+
+php artisan make:migration create_mau_table --create=mau
+php artisan make:migration create_lo_nhuom_table --create=lo_nhuom
+php artisan make:migration create_phieu_xuat_soi_table --create=phieu_xuat_soi
+php artisan make:migration create_phieu_xuat_moc_table --create=phieu_xuat_moc
+php artisan make:migration create_cay_vai_moc_table --create=cay_vai_moc
+
+php artisan make:migration create_don_hang_cong_ty_table --create=don_hang_cong_ty
+php artisan make:migration create_don_hang_khach_hang_table --create=don_hang_khach_hang
+php artisan make:migration create_hoa_don_nhap_table --create=hoa_don_nhap
+php artisan make:migration create_hoa_don_xuat_table --create=hoa_don_xuat
+php artisan make:migration create_cay_vai_thanh_pham_table --create=cay_vai_thanh_pham
+
+php artisan make:migration create_thu_chi_table --create=thu_chi
+
+
+$table->softDeletes();
+$table->integer('created_by')->unsigned()->nullable();
+
+$table->integer('updated_by')->unsigned()->nullable();
+
+$table->integer('deleted_by')->unsigned()->nullable();
+
+$table->foreign('created_by')->references('id')->on('nhan_vien');
+
+$table->foreign('updated_by')->references('id')->on('nhan_vien');
+
+$table->foreign('deleted_by')->references('id')->on('nhan_vien');
+
+$table->text('ghi_chu')->nullable();
+
+
+CREATE MODEL
+
+php artisan make:model NhanVien
+php artisan make:model NhaCungCap
+php artisan make:model KhachHang
+
+php artisan make:model Kho
+php artisan make:model LoaiSoi
+php artisan make:model LoaiVai
+
+php artisan make:model Mau
+php artisan make:model LoNhuom
+php artisan make:model PhieuXuatSoi
+php artisan make:model PhieuXuatMoc
+php artisan make:model CayVaiMoc
+
+php artisan make:model DonHangCongTy
+php artisan make:model DonHangKhachHang
+php artisan make:model HoaDonNhap
+php artisan make:model HoaDonXuat
+php artisan make:model CayVaiThanhPham
+
+php artisan make:model ThuChi
+
+
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+	protected $table = 'users';
+	use SoftDeletes;
+	protected $dates = ['deleted_at'];
+	protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at'];
+
+
+CREATE MANY-TO-MANY TABLE
+
+php artisan make:migration create_many_to_many_table --create=many_to_many2
+
+
+ADDING RELATIONSHIP
+cay_vai_moc		n-1	loai_vai
+cay_vai_moc		n-1	nhan_vien		(nhan_vien_det_id)
+cay_vai_moc		n-1	kho
+cay_vai_moc		n-1	phieu_xuat_moc
+cay_vai_moc		n-1	lo_nhuom
+cay_vai_thanh_pham	1-1	cay_vai_moc
+cay_vai_thanh_pham	n-1	kho
+cay_vai_thanh_pham	n-1	hoa_don_xuat
+don_hang_cong_ty	n-1?	loai_soi
+don_hang_cong_ty	n-1	nha_cung_cap
+don_hang_khach_hang	n-1	khach_hang
+don_hang_khach_hang	n-1?	loai_vai			n-1	loai vai mau
+don_hang_khach_hang	n-1?	mau			hay	n-n	loai vai mau
+hoa_don_nhap		n-1	don_hang_cong_ty
+hoa_don_nhap		n-1	nha_cung_cap
+hoa_don_nhap		n-1	kho
+hoa_don_nhap		n-1	nhan_vien		(nhan_vien_nhap_id)
+hoa_don_xuat		n-1	don_hang_khach_hang
+hoa_don_xuat		n-1	khach_hang
+hoa_don_xuat		n-1	nhan_vien		(nhan_vien_xuat_id)
+kho			n-1?	nhan_vien		(nhan_vien_quan_ly_id)
+lo_nhuom		n-1	loai_vai
+lo_nhuom		n-1	mau
+lo_nhuom		n-1	nhan_vien		(nhan_vien_nhuom_id)
+loai_soi		n-1?	kho
+loai_vai		n-n	loai_soi		loai_vai_loai_soi
+mau			n-1	nhan_vien		(nhan_vien_pha_che_id)
+phieu_xuat_moc		n-1	loai_vai
+phieu_xuat_moc		n-1	kho
+phieu_xuat_moc		n-1	nhan_vien		(nhan_vien_xuat_id)
+phieu_xuat_soi		n-1	loai_soi
+phieu_xuat_soi		n-1	kho
+phieu_xuat_soi		n-1	nhan_vien		(nhan_vien_xuat_id)
+thu_chi			n-1	khach_hang
+thu_chi			n-1	nha_cung_cap
+
+
+CREATE DATA SEEDER (also test ralationship)
+
+
+CREATE CONTROLLER
+
+
+php artisan make:controller NhanVien --resource
+php artisan make:controller NhaCungCap --resource
+php artisan make:controller KhachHang --resource
+
+php artisan make:controller Kho --resource
+php artisan make:controller LoaiSoi --resource
+php artisan make:controller LoaiVai --resource
+
+php artisan make:controller Mau --resource
+php artisan make:controller LoNhuom --resource
+php artisan make:controller PhieuXuatSoi --resource
+php artisan make:controller PhieuXuatMoc --resource
+php artisan make:controller CayVaiMoc --resource
+
+php artisan make:controller DonHangCongTy --resource
+php artisan make:controller DonHangKhachHang --resource
+php artisan make:controller HoaDonNhap --resource
+php artisan make:controller HoaDonXuat --resource
+php artisan make:controller CayVaiThanhPham --resource
+
+php artisan make:controller ThuChi --resource
+
+

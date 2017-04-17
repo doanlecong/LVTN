@@ -1,0 +1,62 @@
+User may cai created_by updated_by deleted_by cho phep null
+User dung fillable chu khong dung guarded
+Auth bang session chu khong dung auth
+Auth dung hash
+
+Khach hang co the dang ky offline duoc khong?
+Nen quan ly tai khoan chung hay rieng?
+Ma may det dinh dang kieu gi?
+Kich co vai thanh pham mac dinh?
+Hoa don nhap - co the khong co don hang cong ty tuong ung duoc k? (tuong tu voi xuat)
+Khoi luong thung soi la FLOAT hay INT?
+
+Thu chi co tra luong cho nhan vien khong?
+
+RELATIONSHIP
+cay_vai_moc		n-1	loai_vai
+cay_vai_moc		n-1	nhan_vien		(id_nhan_vien_det)
+cay_vai_moc		n-1	kho
+cay_vai_moc		n-1	phieu_xuat_moc
+cay_vai_moc		n-1	lo_nhuom
+cay_vai_thanh_pham	1-1	cay_vai_moc
+cay_vai_thanh_pham	n-1	kho
+cay_vai_thanh_pham	n-1	hoa_don_xuat
+don_hang_cong_ty	n-1?	loai_soi
+don_hang_cong_ty	n-1	nha_cung_cap
+don_hang_khach_hang	n-1	khach_hang
+don_hang_khach_hang	n-1?	loai_vai			n-1	loai vai mau
+don_hang_khach_hang	n-1?	mau			hay	n-n	loai vai mau
+hoa_don_nhap		n-1	don_hang_cong_ty
+hoa_don_nhap		n-1	nha_cung_cap
+hoa_don_nhap		n-1	kho
+hoa_don_nhap		n-1	nhan_vien		(id_nhan_vien_nhap)
+hoa_don_xuat		n-1	don_hang_khach_hang
+hoa_don_xuat		n-1	khach_hang
+hoa_don_xuat		n-1	nhan_vien		(id_nhan_vien_xuat)
+kho			n-1?	nhan_vien		(id_nhan_vien_quan_ly)
+lo_nhuom		n-1	loai_vai
+lo_nhuom		n-1	mau
+lo_nhuom		n-1	nhan_vien		(id_nhan_vien_nhuomg)
+loai_soi		n-1?	kho
+loai_vai		n-n	loai_soi		loai_vai_loai_soi
+mau			n-1	nhan_vien		(id_nhan_vien_pha_che)
+phieu_xuat_moc		n-1	loai_vai
+phieu_xuat_moc		n-1	kho
+phieu_xuat_moc		n-1	nhan_vien		(id_nhan_vien_xuat)
+phieu_xuat_soi		n-1	loai_soi
+phieu_xuat_soi		n-1	kho
+phieu_xuat_soi		n-1	nhan_vien		(id_nhan_vien_xuat)
+thu_chi			n-1	khach_hang
+thu_chi			n-1	nha_cung_cap
+
+
+Role list
+0: System developer
+1: Administrator
+2: HR
+3: Kho
+4: Ban hang
+
+
+Chua co lo nhuom thi chua duoc xuat moc?
+Lo nhuom co phai nhuom dung loai vai?
