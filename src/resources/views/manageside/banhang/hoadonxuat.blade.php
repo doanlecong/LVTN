@@ -90,7 +90,7 @@
 
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                             <fieldset>
-                               <legend style='color:gray'><small><i>Danh sách cây vải tương ứng:</i></small></legend>
+                               <legend style='color:gray'><small><i>Hóa đơn này xuất những cây vải sau:</i></small></legend>
 
 
                                 <div class="form-group">
@@ -286,6 +286,7 @@
                     divDanhSachCayVai.html('');
                     // show list cây vải mới tương ứng với đơn hàng đã chọn
                     var listCheckBox = '';
+                    if (data.length == 0) listCheckBox = '<br> Hiện tại không có cây vải nào trong kho <br> có loại vải và màu phù hợp yêu cầu đơn hàng bạn chọn! <br><br> Vui lòng chọn một đơn hàng khác!';
                     for (var i=0; i<data.length; ++i) {
                         listCheckBox += '<input type="checkbox" name="danh_sach_cay_vai[]" value="' + data[i]['id'] + '" /> #' +
                             data[i]['id'] +
