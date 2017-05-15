@@ -64,7 +64,9 @@ class HoaDonXuatController extends Controller
         //return $listLoNhuom;
         $listCayVai = CayVaiThanhPham::where('loai_vai_id', $loai_vai_id)
         ->whereIn('lo_nhuom_id', $listLoNhuom)
-        ->select('id')->get();
+        ->where('tinh_trang', 'Chưa Xuất')
+        //->select('id')
+        ->get();
         return $listCayVai;
     }
 
@@ -97,7 +99,7 @@ class HoaDonXuatController extends Controller
         foreach ($request->danh_sach_cay_vai as $key => $cvtp_id) {
             $cvtp = CayVaiThanhPham::where('hoa_don_xuat_id', null)->find($cvtp_id);
             $cvtp->hoa_don_xuat_id = $hoadonxuat->id;
-            $cvtp->trang_thai = 'Chờ Xuất';
+            $cvtp->tinh_trang = 'Chờ Xuất';
             $cvtp->save();
         }
         // foreach ($request->danh_sach_cay_vai as $key => $cvtp_id) {

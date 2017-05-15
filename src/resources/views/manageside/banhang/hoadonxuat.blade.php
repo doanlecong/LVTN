@@ -94,12 +94,8 @@
 
 
                                 <div class="form-group">
-                                    {{Form::label('danh_sach_cay_vai_xuat', 'Chọn những cây vải cần xuất: *')}}
-                                    <div style='height:185px; overflow:auto;' id='danh_sach_cay_vai_xuat'>
-                                        <input type="checkbox" name="danh_sach_cay_vai_xuat[]" value="coding" /> a1
-                                        <br />
-                                        <input type="checkbox" name="danh_sach_cay_vai_xuat[]" value="coding" /> a2
-                                        <br />
+                                    {{Form::label('danh_sach_cay_vai', 'Chọn những cây vải cần xuất: *')}}
+                                    <div style='height:185px; overflow:auto;' id='danh_sach_cay_vai'>
                                     </div>
                                 </div>
 
@@ -273,14 +269,42 @@
         })
     }
 
-    $(document).ready(function(){
-        dscvtpIndex = 1;
-        $('#formThemHoaDonXuat select').prop('selectedIndex', -1);
-        $('#formThemHoaDonXuat .themCayVai').click(function() {
-            //$('#formThemHoaDonXuat #dscvtp').html( $('#dscvtp').html() + $('#cvtpinput').html() );
-            $($('#formThemHoaDonXuat #cvtpinput').html()).insertBefore('#dscvtp');
-            $('#formThemHoaDonXuat #danh_sach_cay_vai select.new:visible').prop('selectedIndex', -1).removeClass('new').prop('name', 'danh_sach_cay_vai['+(dscvtpIndex++)+']');
+    $(document).ready(function() {
+        // khi chọn đơn hàng -> show ra list những cây vải hiện có trong kho, đáp ứng yêu cầu loại vải và màu của đơn hàng đó
+        $('#formThemHoaDonXuat #don_hang_khach_hang_id').change(function() {
+            var dhkh_id = $(this).val();
+
+            $.ajax({
+                method: 'get',
+                async: true,
+                url: 'ajax/danh_sach_cay_vai_phu_hop_don_hang/'+dhkh_id,
+                success: function(data) {
+                    // alert(data[0]['so_met']);
+
+                    // xóa list cũ
+                    var divDanhSachCayVai = $('#formThemHoaDonXuat #danh_sach_cay_vai');
+                    divDanhSachCayVai.html('');
+                    // show list cây vải mới tương ứng với đơn hàng đã chọn
+                    var listCheckBox = '';
+                    for (var i=0; i<data.length; ++i) {
+                        listCheckBox += '<input type="checkbox" name="danh_sach_cay_vai[]" value="' + data[i]['id'] + '" /> #' +
+                            data[i]['id'] +
+                            ' - ' + data[i]['so_met'] + 'm' +
+                            ' * ' + data[i]['don_gia'] + ' vnd';
+
+                        if (data[i]['kich_co'] != null) listCheckBox += ' (khổ: ' + data[i]['kich_co'] + ')';
+
+                        listCheckBox += ' <br />';
+                    }
+                    divDanhSachCayVai.html(listCheckBox);
+                },
+                fail: function() {
+                    alert('Server không trả vể Kết Quả!!!');
+                }
+            })
         });
+
+        $('#formThemHoaDonXuat select').prop('selectedIndex', -1);
 
         $('.addHoaDonXuat').click(function() {
             
@@ -298,7 +322,7 @@
     });
 
     function validateForm() {
-        var checkbox = document.getElementsByName('danh_sach_cay_vai_xuat[]');
+        var checkbox = document.getElementsByName('danh_sach_cay_vai[]');
         for(var i=0; i< checkbox.length; i++) {
             if(checkbox[i].checked)
                 return true;
