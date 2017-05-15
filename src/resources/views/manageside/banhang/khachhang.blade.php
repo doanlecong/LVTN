@@ -154,14 +154,10 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Trang Quản Lý Khách Hàng <!--<small>Chào!!</small>-->
+                Trang Quản Lý Khách Hàng
             </h1>
-            <ol class="breadcrumb">
-                <li class="active">
-                    <i class="fa fa-dashboard fa-lg"></i><span><strong>    Danh Sách Các Khách Hàng  </strong></span> 
-                </li>
-            </ol>
-             @if (Session::has('success'))
+
+            @if (Session::has('success'))
 	
                 <div class="alert alert-success" role="alert">
                     <strong>Success:</strong> {{ Session::get('success') }}

@@ -172,11 +172,7 @@
         <h1 class="page-header">
             Trang Quản Lý Đơn Hàng Khách Hàng <!--<small>Chào!!</small>-->
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-dashboard fa-lg"></i><span><strong>    Danh Sách Các Đơn Hàng Khách Hàng  </strong></span> 
-            </li>
-        </ol>
+
         @if (Session::has('success'))
 	
                 <div class="alert alert-success" role="alert">
@@ -184,6 +180,7 @@
                 </div>
 
         @endif
+
         <ol class="breadcrumb">
             <li class="active">
                 <div class ="row ">

@@ -9,7 +9,6 @@ use App\NhanVien;
 use App\HoaDonXuat;
 use App\CayVaiThanhPham;
 use App\LoNhuom;
-use App\DanhSachCayThanhPhamChoXuat;
 
 class HoaDonXuatController extends Controller
 {

@@ -90,11 +90,11 @@
 
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                             <fieldset>
-                               <legend style='color:gray'><small><i>Danh sách cây vải xuất:</i></small></legend>
+                               <legend style='color:gray'><small><i>Danh sách cây vải tương ứng:</i></small></legend>
 
 
                                 <div class="form-group">
-                                    {{Form::label('Chọn cây vải cần xuất: *')}}
+                                    {{Form::label('danh_sach_cay_vai_xuat', 'Chọn những cây vải cần xuất: *')}}
                                     <div style='height:185px; overflow:auto;' id='danh_sach_cay_vai_xuat'>
                                         <input type="checkbox" name="danh_sach_cay_vai_xuat[]" value="coding" /> a1
                                         <br />
@@ -167,13 +167,9 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Trang Quản Lý Hóa Đơn Xuất <!--<small>Chào!!</small>-->
+                Trang Quản Lý Hóa Đơn Xuất
             </h1>
-            <ol class="breadcrumb">
-                <li class="active">
-                    <i class="fa fa-dashboard fa-lg"></i><span><strong>    Danh Sách Các Hóa Đơn Xuất  </strong></span> 
-                </li>
-            </ol>
+
             @if (Session::has('success'))
 	
                 <div class="alert alert-success" role="alert">
