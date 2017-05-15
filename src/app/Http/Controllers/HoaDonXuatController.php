@@ -57,7 +57,7 @@ class HoaDonXuatController extends Controller
         return $hdx;
     }
 
-    public function getCayVaiListAjax($id)
+    public function DanhSachCayVaiUngVoiDonHangAjax($id)
     {
         $dhkh = DonHangKhachHang::findOrFail($id);
         $loai_vai_id = $dhkh->loai_vai_id;

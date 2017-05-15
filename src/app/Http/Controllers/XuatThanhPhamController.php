@@ -17,9 +17,6 @@ class XuatThanhPhamController extends Controller
      */
     public function index()
     {   
-        // $hoadonxuatchuathuchienxuatRaw = DanhSachCayThanhPhamChoXuat::all();
-        // //echo dd($hoadonxuatchuathuchienxuatRaw);
-        // $hoadonchuaxuat = $hoadonxuatchuathuchienxuatRaw->unique('DanhSachCayThanhPhamChoXuat.hoa_don_xuat_id');
         $hoadonchuaxuat_id = CayVaiThanhPham::where('tinh_trang', 'Chờ Xuất')->select('hoa_don_xuat_id')->distinct()->get()->toArray();
         $hoadonchuaxuat = HoaDonXuat::find($hoadonchuaxuat_id);
         // foreach($hoadonchuaxuat as $hoadon){
