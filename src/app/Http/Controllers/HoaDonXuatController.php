@@ -94,31 +94,31 @@ class HoaDonXuatController extends Controller
         foreach ($request->danh_sach_cay_vai as $key => $cvtp_id) {
             $cvtp = CayVaiThanhPham::where('hoa_don_xuat_id', null)->find($cvtp_id);
             $cvtp->hoa_don_xuat_id = $hoadonxuat->id;
-            $cvtp->tinh_trang = 'Chờ Xuất';
+            $cvtp->tinh_trang = 'Đã Xuất';
             $cvtp->save();
         }
-        // foreach ($request->danh_sach_cay_vai as $key => $cvtp_id) {
-        //    $danhsachcaythanhphamchoxuatItem = new DanhSachCayThanhPhamChoXuat;
-        //    $danhsachcaythanhphamchoxuatItem->hoa_don_xuat_id = $hoadonxuat->id;
-        //    $danhsachcaythanhphamchoxuatItem->cay_vai_thanh_pham_id= $cvtp_id;
-        //    $danhsachcaythanhphamchoxuatItem->save();
-        // }
 
-        //update tình trạng đơn hàng khách hàng
-        // $tong_so_met = 0;
-        // foreach ($hoadonxuat->don_hang_khach_hang->hoa_don_xuats as $hdx) {
-        //     foreach ($hdx->cay_vai_thanh_phams as $cvtp) {
-        //         $tong_so_met += $cvtp->so_met;
-        //     }
-        // }
-        // if ($hoadonxuat->don_hang_khach_hang->tong_so_met > $tong_so_met) {
-        //     $hoadonxuat->don_hang_khach_hang->tinh_trang = 'Đang giao';
-        // }
-        // if ($hoadonxuat->don_hang_khach_hang->tong_so_met <= $tong_so_met) {
-        //     $hoadonxuat->don_hang_khach_hang->tinh_trang = 'Hoàn thành';
-        // }
+        // update tình trạng đơn hàng khách hàng
+        $tong_so_met = 0;
+        $tong_tien = 0;
+        foreach ($hoadonxuat->don_hang_khach_hang->hoa_don_xuats as $hdx) {
+            foreach ($hdx->cay_vai_thanh_phams as $cvtp) {
+                $tong_so_met += $cvtp->so_met;
+                $tong_tien += $cvtp->so_met * $cvtp->don_gia;
+            }
+        }
+        if ($hoadonxuat->don_hang_khach_hang->tong_so_met > $tong_so_met) {
+            $hoadonxuat->don_hang_khach_hang->tinh_trang = 'Đang giao';
+        }
+        if ($hoadonxuat->don_hang_khach_hang->tong_so_met <= $tong_so_met) {
+            $hoadonxuat->don_hang_khach_hang->tinh_trang = 'Hoàn thành';
+        }
 
-        // $hoadonxuat->don_hang_khach_hang->save();
+        $hoadonxuat->don_hang_khach_hang->save();
+
+        //update công nợ khách hàng sau khi giao vải
+        $hoadonxuat->khach_hang->cong_no += $tong_tien;
+
 
         \Session::flash('success', 'Hóa đơn xuất đã được thêm thành công!');
         return redirect('/manage_ban_hang_hoa_don_xuat');
