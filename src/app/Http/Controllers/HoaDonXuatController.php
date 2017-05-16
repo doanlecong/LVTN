@@ -54,12 +54,13 @@ class HoaDonXuatController extends Controller
     public function DanhSachCayVaiUngVoiDonHangAjax($id)
     {
         $dhkh = DonHangKhachHang::findOrFail($id);
+        $kho_vai = $dhkh->kich_co;
         $loai_vai_id = $dhkh->loai_vai_id;
         $listLoNhuom = LoNhuom::where('mau_id', $dhkh->mau_id)->select('id')->get();
         //return $listLoNhuom;
         $listCayVai = CayVaiThanhPham::where('loai_vai_id', $loai_vai_id)
         ->whereIn('lo_nhuom_id', $listLoNhuom)
-        ->where('tinh_trang', 'Chưa Xuất')
+        ->where('tinh_trang', 'Chưa Xuất')->where('kich_co',$kho_vai)
         //->select('id')
         ->get();
         return $listCayVai;
@@ -94,7 +95,7 @@ class HoaDonXuatController extends Controller
         foreach ($request->danh_sach_cay_vai as $key => $cvtp_id) {
             $cvtp = CayVaiThanhPham::where('hoa_don_xuat_id', null)->find($cvtp_id);
             $cvtp->hoa_don_xuat_id = $hoadonxuat->id;
-            $cvtp->tinh_trang = 'Đã Xuất';
+            $cvtp->tinh_trang = 'Chờ Xuất';
             $cvtp->save();
         }
 
@@ -104,7 +105,7 @@ class HoaDonXuatController extends Controller
         foreach ($hoadonxuat->don_hang_khach_hang->hoa_don_xuats as $hdx) {
             foreach ($hdx->cay_vai_thanh_phams as $cvtp) {
                 $tong_so_met += $cvtp->so_met;
-                $tong_tien += $cvtp->so_met * $cvtp->don_gia;
+                $tong_tien += ($cvtp->so_met * $cvtp->don_gia);
             }
         }
         if ($hoadonxuat->don_hang_khach_hang->tong_so_met > $tong_so_met) {
@@ -115,10 +116,26 @@ class HoaDonXuatController extends Controller
         }
 
         $hoadonxuat->don_hang_khach_hang->save();
-
+        $tong_tien_sau_chiet_khau = $tong_tien*(100-($hoadonxuat->don_hang_khach_hang->chiet_khau))/100;
         //update công nợ khách hàng sau khi giao vải
-        $hoadonxuat->khach_hang->cong_no += $tong_tien;
+        if($hoadonxuat->khach_hang->ghi_chu !=NULL){
+            $duno = intval($hoadonxuat->khach_hang->ghi_chu);
+            $kq = $duno - $tong_tien_sau_chiet_khau; 
+            if($kq==0){
+                $hoadonxuat->khach_hang->ghi_chu =NULL;
 
+            }else if($kq > 0 ) {
+                $hoadonxuat->khach_hang->ghi_chu =strval($kq);
+            }else if($kq < 0 ){
+                $hoadonxuat->khach_hang->ghi_chu =NULL;
+                $hoadonxuat->khach_hang->cong_no = $kq+(-2*$kq);                
+            }
+        }else {
+            $hoadonxuat->khach_hang->cong_no += $tong_tien_sau_chiet_khau;
+        }
+
+       // $hoadonxuat->khach_hang->cong_no += $tong_tien*(100-($hoadonxuat->don_hang_khach_hang->chiet_khau))/100;
+        $hoadonxuat->khach_hang->save();
 
         \Session::flash('success', 'Hóa đơn xuất đã được thêm thành công!');
         return redirect('/manage_ban_hang_hoa_don_xuat');

@@ -67,10 +67,10 @@ class DonHangKhachHangController extends Controller
         //Tạo khách hàng
         $this->validate($request, array(
         ));
-        $khachhang = new DonHangKhachHang;
+        $donhang = new DonHangKhachHang;
         $inputs = $request->all();
-        $khachhang->fill($inputs);
-        $khachhang->save();
+        $donhang->fill($inputs);
+        $donhang->save();
 
         \Session::flash('success', 'Đơn hàng khách hàng đã được thêm thành công!');
         return redirect('/manage_ban_hang_don_hang');
@@ -110,11 +110,10 @@ class DonHangKhachHangController extends Controller
         //Cập nhật đơn hàng khách hàng
         $this->validate($request ,array(
         ));
-        $khachhang = DonHangKhachHang::findOrFail($id);
+        $donhang = DonHangKhachHang::findOrFail($id);
         $inputs = $request->all();
-        $khachhang->fill($inputs);
-        $khachhang->save();
-
+        $donhang->fill($inputs);
+        $donhang->save();
         \Session::flash('success', 'Đơn hàng khách hàng đã được cập nhật thành công!');
         return redirect('/manage_ban_hang_don_hang');
     }

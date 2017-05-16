@@ -42,7 +42,7 @@ class XuatThanhPhamController extends Controller
         $loaivai =  $donhangkhachhang->loai_vai;
         $khachhang =  $donhangkhachhang->khach_hang;
         $mau = $donhangkhachhang->mau;
-        $danhsachcaychoxuat = $hoadon->danh_sach_cay_thanh_pham_cho_xuat;
+        $danhsachcaychoxuat = $hoadon->cay_vai_thanh_phams;
         $arrayCaythanhpham =[];
         foreach($danhsachcaychoxuat as $caychoxuat){
             array_push($arrayCaythanhpham,$caychoxuat->cay_vai_thanh_pham);
@@ -101,7 +101,7 @@ class XuatThanhPhamController extends Controller
     {
         $hoadonxuat = $request->ma_phieu_xuat_thanh_pham_id;
 
-        DanhSachCayThanhPhamChoXuat::where('hoa_don_xuat_id','=',$hoadonxuat)->delete();
+        //DanhSachCayThanhPhamChoXuat::where('hoa_don_xuat_id','=',$hoadonxuat)->delete();
         foreach($request->caythanhpham as $cay){
             //echo $cay;
             $caythanhpham = CayVaiThanhPham::findOrFail($cay);
@@ -118,11 +118,11 @@ class XuatThanhPhamController extends Controller
     public function updateThongTinXuatThanhPham(Request $request, $id){
         $hoadonxuat = HoaDonXuat::findOrFail($id);
         foreach($hoadonxuat->cay_vai_thanh_phams as $caythanhpham){
-            if($request->input('select'.$caythanhpham->id)=='Chưa Xuất'){
-                $caythanhpham->tinh_trang ='Chưa Xuất';
-                $caythanhpham->hoa_don_xuat_id = NULL;
+            if($request->input('select'.$caythanhpham->id)=='Chờ Xuất'){
+                $caythanhpham->tinh_trang ='Chờ Xuất';
+                //$caythanhpham->hoa_don_xuat_id = NULL;
                 $caythanhpham->save();
-                $caymocchoxuat = DanhSachCayThanhPhamChoXuat::withTrashed()->where('cay_vai_thanh_pham_id','=',$caythanhpham->id)->restore();
+                //$caymocchoxuat = DanhSachCayThanhPhamChoXuat::withTrashed()->where('cay_vai_thanh_pham_id','=',$caythanhpham->id)->restore();
                 // Chuyen cac thong tin trong bang danhsachcaythanhphamchoxuat sang chua xoa untrash()
 
             }

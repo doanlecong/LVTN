@@ -309,10 +309,10 @@
                           //$("#addphieuxuatthanhpham #loai_vai_id").val(data.don_hang_khach_hang.loai_vai.ten)
                           danhsachcaythanhpham.empty();
                           danhsachcaythanhpham.append("<lable>Mời Chọn Danh Sách Cây Thành Phẩm (<small>Lấy ra từ hóa đơn</small>) :</option>");
-                          for(i = 0 ;i<data[0].danh_sach_cay_thanh_pham_cho_xuat.length;i++){
+                          for(i = 0 ;i<data[0].cay_vai_thanh_phams.length;i++){
                               console.log(i);   
                               danhsachcaythanhpham.append(" <div class='checkbox'>"
-                                                                    +"<label><input name='caythanhpham[]' type='checkbox' value='"+data[0].danh_sach_cay_thanh_pham_cho_xuat[i].cay_vai_thanh_pham.id+"'>Mã : "+data[0].danh_sach_cay_thanh_pham_cho_xuat[i].cay_vai_thanh_pham.id+" --Kích Cỡ : "+data[0].danh_sach_cay_thanh_pham_cho_xuat[i].cay_vai_thanh_pham.kich_co+" mét -- Dài : "+data[0].danh_sach_cay_thanh_pham_cho_xuat[i].cay_vai_thanh_pham.so_met+"</label>"
+                                                                    +"<label><input name='caythanhpham[]' type='checkbox' value='"+data[0].cay_vai_thanh_phams[i].id+"'>Mã : "+data[0].cay_vai_thanh_phams[i].id+" --Kích Cỡ : "+data[0].cay_vai_thanh_phams[i].kich_co+" mét -- Dài : "+data[0].cay_vai_thanh_phams[i].so_met+"</label>"
                                                             +"</div>")
                           }
                           $("#xuatcaythanhpham #ma_donhang").val(data[0].don_hang_khach_hang_id);
@@ -399,7 +399,7 @@
                                 $("#inputgroup"+i).append("<label for='selectspan"+i+"' class='input-group-addon'>Cây Vải Số : "+data[i].id+"--- Dài : "+data[i].so_met+"--- Ngày Nhập Kho : "+data[i].ngay_gio_nhap_kho.toString()+"</label>");
                                 $("#inputgroup"+i).append("<span class='input-group-addon' id='selectspan"+i+"'></span>");
                                 $("#selectspan"+i).append("<select name='select"+data[i].id+"' onChange='changeColor(this)' id='select"+data[i].id+"' class='form-control' >"
-                                                                +"<option value='Chưa Xuất'>Chưa Xuất</option>"
+                                                                +"<option value='Chờ Xuất'>Chờ Xuất</option>"
                                                                 +"<option value='Đã Xuất'>Đã Xuất</option>"
                                                            +"</select>");
                                 $("#select"+data[i].id).val(data[i].tinh_trang);
@@ -453,7 +453,7 @@
             // }
             var value = abc.value;
             console.log(value);
-            if(value =="Chưa Xuất"){
+            if(value =="Chờ Xuất"){
                 $(abc).css({"background-color":"#c70470","color":"#caff00"});
             }else{
                 $(abc).css({"background-color":"white","color":"black"});

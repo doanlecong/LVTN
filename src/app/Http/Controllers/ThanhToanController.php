@@ -52,6 +52,21 @@ class ThanhToanController extends Controller
         $thanhtoanrecord->so_tien = $request->sotien;
         $thanhtoanrecord->ngay_gio= (new \DateTime())->format('Y-m-d H:i:s');
         $thanhtoanrecord->save();
+        $khachhang = KhachHang::findOrFail($request->khachhang);
+        $remainMoney = $khachhang->cong_no - $request->sotien;
+        if($remainMoney >= 0){
+            $khachhang->cong_no = $remainMoney ;
+        } else if( $remainMoney < 0){
+            $khachhang->cong_no = 0 ;
+            $remainMoney += -($remainMoney*2);
+            if($khachhang->ghi_chu ==NULL){
+                $khachhang->ghi_chu= strval($remainMoney);
+            }else {
+                $duno = intval($khachhang->ghi_chu) ;
+                $khachhang->ghi_chu = strval($duno+$remainMoney);
+            }
+        }
+        $khachhang->save();
 
         \Session::flash('success','Thêm Thanh Công Thông Tin Thanh Toán');
         return redirect('/manage_ban_hang_thanh_toan');

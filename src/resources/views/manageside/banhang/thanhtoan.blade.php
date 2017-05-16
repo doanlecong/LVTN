@@ -126,7 +126,7 @@
                                                                     @if($listkhachhang->count() !=0)
                                                                         <option value="">Mời Chọn Khách Hàng </option>
                                                                         @foreach($listkhachhang as $khachhang)
-                                                                            <option value="{{$khachhang->id}}">{{$khachhang->id}} -- {{$khachhang->ten}} -- Công Nợ Hiện Tại : {{$khachhang->cong_no}}</option>
+                                                                            <option value="{{$khachhang->id}}">{{$khachhang->id}} -- {{$khachhang->ten}} -- Công Nợ Hiện Tại : {{$khachhang->cong_no}} @if($khachhang->ghi_chu !=NULL) --- Dư Tài Khoản :{{$khachhang->ghi_chu}}  @endif</option>
                                                                         @endforeach
                                                                     @else
                                                                         <option value="">Không có Khách Hàng Nào trong Hệ thống</option>
