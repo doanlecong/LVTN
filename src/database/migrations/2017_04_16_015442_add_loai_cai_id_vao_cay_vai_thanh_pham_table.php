@@ -14,7 +14,8 @@ class AddLoaiCaiIdVaoCayVaiThanhPhamTable extends Migration
     public function up()
     {
         Schema::table('cay_vai_thanh_pham', function (Blueprint $table) {
-            $table->integer('loai_vai_id')->unsigned()->after('cay_vai_moc_id');   
+            $table->integer('loai_vai_id')->unsigned()->after('cay_vai_moc_id');
+            $table->foreign('loai_vai_id')->references('id')->on('loai_vai');
         });
     }
 

@@ -15,6 +15,9 @@ class LoNhuom extends Model
 	public function loai_vai() {
 		return $this->belongsTo('App\LoaiVai');
 	}
+	public function cay_vai_thanh_phams() {
+		return $this->hasMany('App\CayVaiThanhPham');
+	}
 	public function mau() {
 		return $this->belongsTo('App\Mau');
 	}

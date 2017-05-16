@@ -21,16 +21,19 @@ class CayVaiThanhPham extends Model
 	public function lo_nhuom(){
 		return $this->belongsTo('App\LoNhuom');
 	}
-	public function kho() {
-		return $this->belongsTo('App\Kho');
-	}
 	public function mau() {
 		return $this->belongsTo('App\Mau');
+	}
+	public function kho() {
+		return $this->belongsTo('App\Kho');
 	}
 	public function hoa_don_xuat() {
 		return $this->belongsTo('App\HoaDonXuat');
 	}
 
 
-	//
+	public function cay_vai_thanh_pham_tra_lai() {
+		return $this->hasOne('App\CayVaiThanhPhamTraLai');
+	}
+
 }

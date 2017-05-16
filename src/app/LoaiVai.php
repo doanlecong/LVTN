@@ -18,6 +18,12 @@ class LoaiVai extends Model
 	public function cay_vai_mocs() {
 		return $this->hasMany('App\CayVaiMoc');
 	}
+	public function cay_vai_thanh_phams() {
+		return $this->hasMany('App\CayVaiThanhPham');
+	}
+	public function cay_vai_thanh_pham_tra_lais() {
+		return $this->hasMany('App\CayVaiThanhPhamTraLai');
+	}
 	public function don_hang_khach_hangs() {
 		return $this->hasMany('App\DonHangKhachHang');
 	}

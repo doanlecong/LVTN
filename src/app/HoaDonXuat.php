@@ -25,4 +25,7 @@ class HoaDonXuat extends Model
 	public function cay_vai_thanh_phams() {
 		return $this->hasMany('App\CayVaiThanhPham');
 	}
+	public function cay_vai_thanh_pham_tra_lais() {
+		return $this->hasMany('App\CayVaiThanhPhamTraLai');
+	}
 }

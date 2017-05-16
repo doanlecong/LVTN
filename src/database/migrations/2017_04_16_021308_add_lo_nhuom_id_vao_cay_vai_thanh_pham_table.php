@@ -15,6 +15,7 @@ class AddLoNhuomIdVaoCayVaiThanhPhamTable extends Migration
     {
         Schema::table('cay_vai_thanh_pham', function (Blueprint $table) {
             $table->integer('lo_nhuom_id')->unsigned()->nullable()->after('don_gia');
+            $table->foreign('lo_nhuom_id')->references('id')->on('lo_nhuom');
         });
     }
 
