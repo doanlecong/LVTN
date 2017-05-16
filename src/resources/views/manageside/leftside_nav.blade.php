@@ -71,7 +71,7 @@
                 <a href="{{url('/manage_ban_hang_hoa_don_xuat')}}">Hóa Đơn Xuất</a>
             </li>
             <li>
-                <a href="{{url('/manage_ban_hang_thanh_toan')}}">Thanh toán</a>
+                <a href="{{url('/manage_ban_hang_thanh_toan')}}">Thanh Toán</a>
             </li>
         </ul>
     </li>
