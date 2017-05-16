@@ -52,7 +52,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Trang Quản Lý Tổng <small>Chào!!</small>
+                 Kho Thành Phẩm
             </h1>
             <ol class="breadcrumb">
                 <li class="active">
@@ -324,7 +324,7 @@
                                 
                                 <td>{{$caythanhpham->id}}</td>
                                 <td>{{$caythanhpham->cay_vai_moc_id}}</td>
-                                <td style="background-color:{{$caythanhpham->mau->ma_mau}}">{{$caythanhpham->mau->ten}}</td>
+                                <td style="background-color:{{$caythanhpham->lo_nhuom->mau->ma_mau}}">{{$caythanhpham->lo_nhuom->mau->ten}}</td>
                                 <td>{{$caythanhpham->kich_co}}</td>
                                 <td>{{$caythanhpham->so_met}}</td>
                                 <td>{{$caythanhpham->don_gia}}</td>
