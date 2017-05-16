@@ -129,31 +129,60 @@
                 </div>
                 {{Form::open(['url'=>'manage_ban_hang_hoa_don_xuat', 'method'=>'PUT', 'id'=>'formCapNhatHoaDonXuat', 'class'=> 'form-group'])}}
                     <div class="modal-body">
-                        <div class="form-group">
-                            {{Form::label('id', 'Mã hóa đơn xuất: *')}}
-                            {{Form::text('id', null, array('disabled','class'=>'form-control','required','maxlength'=>191))}}
-                        </div>
-                        <div class="form-group">
-                            {{Form::label('don_hang_khach_hang_id', 'Đơn hàng khách hàng: *')}}
-                            <select disabled class='form-control' required name='don_hang_khach_hang_id' id='don_hang_khach_hang_id' value=''>
-                            @foreach($dhkhs as $dhkh)
-                                <option value="{{ $dhkh->id }}">#{{ $dhkh->id }} - {{ $dhkh->khach_hang->ten }} - {{ $dhkh->loai_vai->ten }} - {{ $dhkh->mau->ten }} - {{ $dhkh->tong_so_met }}</option>
-                            @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            {{Form::label('ngay_gio_xuat_hoa_don', 'Ngày giờ xuất hóa đơn: *')}}
-                            <input disabled class='form-control' required name='ngay_gio_xuat_hoa_don' type='datetime-local' id='ngay_gio_xuat_hoa_don' step='1' />
-                        </div>
-                        <div class="form-group">
-                            {{Form::label('nhan_vien_xuat_id', 'Nhân viên xuất: *')}}
-                            {{Form::select('nhan_vien_xuat_id', $nhanViens, null, array('disabled', 'class'=>'form-control', 'required'))}}
-                        </div>
+                        <div class="row">
+
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <fieldset>
+                               <legend style='color:gray'><small><i>Thông tin hóa đơn:</i></small></legend>
                         
-                        <div class="form-group" id='danh_sach_cay_vai'>
-                            {{Form::label('danh_sach_cay_vai', 'Danh sách cây vải xuất: *')}}
+                                <div class="form-group">
+                                    {{Form::label('id', 'Mã hóa đơn xuất: *')}}
+                                    {{Form::text('id', null, array('disabled','class'=>'form-control','required','maxlength'=>191))}}
+                                </div>
+                                <div class="form-group">
+                                    {{Form::label('don_hang_khach_hang_id', 'Đơn hàng khách hàng: *')}}
+                                    <select disabled class='form-control' required name='don_hang_khach_hang_id' id='don_hang_khach_hang_id' value=''>
+                                    @foreach($dhkhs as $dhkh)
+                                        <option value="{{ $dhkh->id }}">#{{ $dhkh->id }} - {{ $dhkh->khach_hang->ten }} - {{ $dhkh->loai_vai->ten }} - {{ $dhkh->mau->ten }} - {{ $dhkh->tong_so_met }}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    {{Form::label('ngay_gio_xuat_hoa_don', 'Ngày giờ xuất hóa đơn: *')}}
+                                    <input disabled class='form-control' required name='ngay_gio_xuat_hoa_don' type='datetime-local' id='ngay_gio_xuat_hoa_don' step='1' />
+                                </div>
+                                <div class="form-group">
+                                    {{Form::label('nhan_vien_xuat_id', 'Nhân viên xuất: *')}}
+                                    {{Form::select('nhan_vien_xuat_id', $nhanViens, null, array('disabled', 'class'=>'form-control', 'required'))}}
+                                </div>
+                        
+                            </fieldset>
+                            </div>
+
+
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <fieldset>
+                               <legend style='color:gray'><small><i>Hóa đơn này xuất những cây vải sau:</i></small></legend>
+
+
+                                <div class="form-group">
+                                    {{Form::label('danh_sach_cay_vai', 'Chọn những cây vải cần xuất: *')}}
+                                    <div style='height:185px; overflow:auto;' id='danh_sach_cay_vai'>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                            </div>
+
                         </div>
+
                     </div>
+                    <!--<div class="modal-footer">
+                        
+                        <button type="submit" class="btn btn-large btn-block btn-warning">Lưu</button>
+                        
+                        <button type="button" class="btn btn-large btn-block btn-default" data-dismiss="modal">Hủy</button>
+                    </div>-->
                 {{Form::close()}}
             </div>
         </div>
@@ -226,18 +255,36 @@
 
 <script>
     function fillForm(form, data) {
-        $(form+' #id').val(data.id);
         $(form+' #don_hang_khach_hang_id').val(data.don_hang_khach_hang_id);
         $(form+' #ngay_gio_xuat_hoa_don').val(data.ngay_gio_xuat_hoa_don.replace(" ", "T"));
         $(form+' #nhan_vien_xuat_id').val(data.nhan_vien_xuat_id);
-        alert(data.cay_vai_thanh_phams)
+        $(form+' #id').val(data.id);
+
+        // xóa list cây vải xuất cũ
+        var divDanhSachCayVai = $(form+' #danh_sach_cay_vai');
+        divDanhSachCayVai.html('');
+        // show list cây vải xuất thuộc hóa đơn đang chọn
+        var listCheckBox = '';
+        var listCayVai = data.cay_vai_thanh_phams;
+        if (listCayVai.length == 0) listCheckBox = '<br> Không có cây vải nào!';
+        for (var i=0; i<listCayVai.length; ++i) {
+            listCheckBox += //'<input type="checkbox" name="danh_sach_cay_vai[]" value="' + listCayVai[i]['id'] + '" />' +
+                ' #' + listCayVai[i]['id'] +
+                ' - ' + listCayVai[i]['so_met'] + 'm' +
+                ' * ' + listCayVai[i]['don_gia'] + ' vnd';
+
+            if (listCayVai[i]['kich_co'] != null) listCheckBox += ' (khổ: ' + listCayVai[i]['kich_co'] + ')';
+
+            listCheckBox += ' <br />';
+        }
+        divDanhSachCayVai.html(listCheckBox);
     }
 
     function fillFormCapNhatHoaDonXuat(id) {
         $.ajax({
             method: 'get',
             async: true,
-            url: 'ajax/manage_ban_hang_hoa_don_xuat/'+id,
+            url: 'ajax/ban_hang/hoa_don_xuat/'+id,
             success: function(data) {
                 $('#formCapNhatHoaDonXuat').attr('action', 'manage_ban_hang_hoa_don_xuat/'+id);
                 fillForm('#formCapNhatHoaDonXuat', data);
@@ -279,8 +326,6 @@
                 async: true,
                 url: 'ajax/danh_sach_cay_vai_phu_hop_don_hang/'+dhkh_id,
                 success: function(data) {
-                    // alert(data[0]['so_met']);
-
                     // xóa list cũ
                     var divDanhSachCayVai = $('#formThemHoaDonXuat #danh_sach_cay_vai');
                     divDanhSachCayVai.html('');

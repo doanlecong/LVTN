@@ -46,13 +46,8 @@ class HoaDonXuatController extends Controller
 
     public function getItemByIdAjax($id) {
         $hdx = HoaDonXuat::findOrFail($id);
-        // $cvtps = CayVaiThanhPham::where('hoa_don_xuat_id', $hdx->id)->get();
-        // $cay_vai_thanh_phams = '<div>';
-        // foreach ($cvtps as $cv) {
-        //     //return 'Cây vải #' . $cv->id . ' - ' . $cv->loai_vai->ten . ' - ' . $cv->lo_nhuom->mau->ten;
-        //     $cay_vai_thanh_phams = $cay_vai_thanh_phams . '<br/>' . 'Cây vải #' . $cv->id . ' - ' . $cv->loai_vai->ten . ' - ' . $cv->lo_nhuom->mau->ten;
-        // }
-        // $dhx->cay_vai_thanh_phams = $cay_vai_thanh_phams . '</div>';
+        // trả về hóa đơn xuất kèm danh sách cây vải đã xuất của hóa đơn đó
+        $cay_vai_thanh_phams = $hdx->cay_vai_thanh_phams;
         return $hdx;
     }
 

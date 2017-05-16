@@ -85,6 +85,8 @@ Route::get('ajax/manage_ban_hang_don_hang/{id}','DonHangKhachHangController@getI
 
 Route::resource('/manage_ban_hang_hoa_don_xuat','HoaDonXuatController');
 Route::get('ajax/danh_sach_cay_vai_phu_hop_don_hang/{id}','HoaDonXuatController@DanhSachCayVaiUngVoiDonHangAjax');
+Route::get('ajax/ban_hang/hoa_don_xuat/{id}','HoaDonXuatController@getItemByIdAjax');
+
 
 Route::resource('/manage_ban_hang_thanh_toan','ThanhToanController');
 
