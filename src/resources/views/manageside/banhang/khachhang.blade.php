@@ -186,6 +186,7 @@
                             <th>Email</th>
                             <th>Số Điện Thoại</th>
                             <th>Công Nợ (VND)</th>
+                            <th>Dư Tài Khoản(VND)</th>
                             <th>Xóa</th>
                         </tr>
                     </thead>
@@ -203,6 +204,7 @@
                                 <td>{{$khachhang->email}}</td>
                                 <td>{{$khachhang->so_dien_thoai}}</td>
                                 <td>{{$khachhang->cong_no}}</td>
+                                <td>@if($khachhang->ghi_chu !=NULL ){{$khachhang->ghi_chu}} @else 0 @endif</td>
                                 <td>
                                     <input type="checkbox" value='{{$khachhang->deleted_at != null}}' disabled value="xoa">
                                 </td>
