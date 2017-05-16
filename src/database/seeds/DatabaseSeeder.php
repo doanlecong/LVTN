@@ -10,130 +10,119 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+
+    public function nhan_vien_seeder()
+    {
+        $this->nhan_vien['1'] = App\NhanVien::firstOrCreate(
+            ['ten_dang_nhap' => 'truc'],
+            [
+                'mat_khau' => Hash::make('123abc'),
+                'ten' => 'Vũ Duy Trúc',
+                'cmnd' => '272277194',
+                'ngay_sinh' => date('Y-m-d'),
+                //'email' => 'truc193204@gmail.com',
+                'so_dien_thoai' => '+84 163 222 8 000',
+                'dia_chi' => '606/49/2C, đường 3 tháng 2, phường 14, quận 10, Tp Hồ Chí Minh',
+                'gioi_tinh' => 'M',
+                'chuc_vu' => 'Lập trình viên',
+                'quyen_han' => 0,
+                'luong' => 0,
+                //'ghi_chu' => '',
+            ]
+        );
+        $this->nhan_vien['doan'] = App\NhanVien::firstOrCreate(
+            ['ten_dang_nhap' => 'doan'],
+            [
+                'mat_khau' => Hash::make('123abc'),
+                'ten' => 'Lê Công Doãn',
+                'cmnd' => '272277194',
+                'ngay_sinh' => date('Y-m-d'),
+                'email' => 'doanlecong1811@gmail.com',
+                'so_dien_thoai' => '0982503643',
+                'dia_chi' => '27/1I tổ 7 . Ấp Chánh 2, xã Tân Xuân , Huyện Hóc Môn, Tp Hồ Chí Minh',
+                'gioi_tinh' => 'M',
+                'chuc_vu' => 'Lập trình viên',
+                'quyen_han' => 0,
+                'luong' => 0,
+                //'ghi_chu' => '',
+            ]
+        );
+        $this->nhan_vien['hung'] = App\NhanVien::firstOrCreate(
+            ['ten_dang_nhap' => 'hung'],
+            [
+                'mat_khau' => Hash::make('123abc'),
+                'ten' => 'Nguyễn Văn Hùng',
+                'cmnd' => '272277194',
+                'ngay_sinh' => date('Y-m-d'),
+                'email' => 'hungvannguyen1811@gmail.com',
+                'so_dien_thoai' => '0982503645',
+                'dia_chi' => '27/1I tổ 7 . Ấp Chánh 3, xã Tân Xuân , Huyện Hóc Môn, Tp Hồ Chí Minh',
+                'gioi_tinh' => 'M',
+                'chuc_vu' => 'Lập trình viên',
+                'quyen_han' => 0,
+                'luong' => 0,
+                //'ghi_chu' => '',
+            ]
+        );
+        $this->nhan_vien['hoa'] = App\NhanVien::firstOrCreate(
+            ['ten_dang_nhap' => 'hoa'],
+            [
+                'mat_khau' => Hash::make('123abc'),
+                'ten' => 'Nguyễn Văn Hùng',
+                'cmnd' => '272277194',
+                'ngay_sinh' => date('Y-m-d'),
+                'email' => 'hungvannguyen111@gmail.com',
+                'so_dien_thoai' => '0982503633',
+                'dia_chi' => '27/1I tổ 7 . Ấp Chánh 4, xã Tân Xuân , Huyện Hóc Môn, Tp Hồ Chí Minh',
+                'gioi_tinh' => 'M',
+                'chuc_vu' => 'Lập trình viên',
+                'quyen_han' => 0,
+                'luong' => 0,
+                //'ghi_chu' => '',
+            ]
+        );
+        $this->nhan_vien['ngoc'] = App\NhanVien::firstOrCreate(
+            ['ten_dang_nhap' => 'ngoc'],
+            [
+                'mat_khau' => Hash::make('123abc'),
+                'ten' => 'Lê Xuân Ngọc',
+                'cmnd' => '272277194',
+                'ngay_sinh' => date('Y-m-d'),
+                'email' => 'hungvannguyen181@gmail.com',
+                'so_dien_thoai' => '0982503629',
+                'dia_chi' => '27/1I tổ 7 . Ấp Chánh 5, xã Tân Xuân , Huyện Hóc Môn, Tp Hồ Chí Minh',
+                'gioi_tinh' => 'M',
+                'chuc_vu' => 'Lập trình viên',
+                'quyen_han' => 0,
+                'luong' => 0,
+                //'ghi_chu' => '',
+            ]
+        );
+        $this->nhan_vien['dung'] = App\NhanVien::firstOrCreate(
+            ['ten_dang_nhap' => 'dung'],
+            [
+                'mat_khau' => Hash::make('123abc'),
+                'ten' => 'Bùi Quý Dung',
+                'cmnd' => '272277194',
+                'ngay_sinh' => date('Y-m-d'),
+                'email' => 'hungvannguyen@gmail.com',
+                'so_dien_thoai' => '0982503623',
+                'dia_chi' => '27/1I tổ 7 . Ấp Chánh 6, xã Tân Xuân , Huyện Hóc Môn, Tp Hồ Chí Minh',
+                'gioi_tinh' => 'M',
+                'chuc_vu' => 'Lập trình viên',
+                'quyen_han' => 0,
+                'luong' => 0,
+                //'ghi_chu' => '',
+            ]
+        );
+    }
+
     public function run()
     {
         //$this->call(UsersTableSeeder::class);
-        // $this->nhan_vien_seeder();
-        // $this->kho_seeder();
-        // $this->loai_soi_seeder();
-        // $this->nha_cung_cap_seeder();
-        // $this->don_hang_cong_ty_seeder();
-        // $this->hoa_don_nhap_seeder();
-        // $this->phieu_xuat_soi_seeder();
-        // $this->mau_seeder();
-        // $this->loai_vai_seeder();
-        // $this->cayvaimoc_seeder();
-        // $this->lonhuom_seeder();
-        // $this->cayvaithanhpham_seeder();
-        // $this->khachhangseeder();
-        // $this->phieuxuatmoc_seeder();
+        $this->nhan_vien_seeder();
     }
 
-    // public function nhan_vien_seeder()
-    // {
-    //     $this->nhan_vien['truc'] = App\NhanVien::firstOrCreate(
-    //         ['ten_dang_nhap' => 'truc'],
-    //         [
-    //             'mat_khau' => Hash::make('123abc'),
-    //             'ten' => 'Vũ Duy Trúc',
-    //             'cmnd' => '272277194',
-    //             'ngay_sinh' => date('Y-m-d'),
-    //             //'email' => 'truc193204@gmail.com',
-    //             'so_dien_thoai' => '+84 163 222 8 000',
-    //             'dia_chi' => '606/49/2C, đường 3 tháng 2, phường 14, quận 10, Tp Hồ Chí Minh',
-    //             'gioi_tinh' => 'M',
-    //             'chuc_vu' => 'Lập trình viên',
-    //             'quyen_han' => 0,
-    //             'luong' => 0,
-    //             //'ghi_chu' => '',
-    //         ]
-    //     );
-    //     $this->nhan_vien['doan'] = App\NhanVien::firstOrCreate(
-    //         ['ten_dang_nhap' => 'doan'],
-    //         [
-    //             'mat_khau' => Hash::make('123abc'),
-    //             'ten' => 'Lê Công Doãn',
-    //             'cmnd' => '272277194',
-    //             'ngay_sinh' => date('Y-m-d'),
-    //             'email' => 'doanlecong1811@gmail.com',
-    //             'so_dien_thoai' => '0982503643',
-    //             'dia_chi' => '27/1I tổ 7 . Ấp Chánh 2, xã Tân Xuân , Huyện Hóc Môn, Tp Hồ Chí Minh',
-    //             'gioi_tinh' => 'M',
-    //             'chuc_vu' => 'Lập trình viên',
-    //             'quyen_han' => 0,
-    //             'luong' => 0,
-    //             //'ghi_chu' => '',
-    //         ]
-    //     );
-    //     $this->nhan_vien['hung'] = App\NhanVien::firstOrCreate(
-    //         ['ten_dang_nhap' => 'hung'],
-    //         [
-    //             'mat_khau' => Hash::make('123abc'),
-    //             'ten' => 'Nguyễn Văn Hùng',
-    //             'cmnd' => '272277194',
-    //             'ngay_sinh' => date('Y-m-d'),
-    //             'email' => 'hungvannguyen1811@gmail.com',
-    //             'so_dien_thoai' => '0982503645',
-    //             'dia_chi' => '27/1I tổ 7 . Ấp Chánh 3, xã Tân Xuân , Huyện Hóc Môn, Tp Hồ Chí Minh',
-    //             'gioi_tinh' => 'M',
-    //             'chuc_vu' => 'Lập trình viên',
-    //             'quyen_han' => 0,
-    //             'luong' => 0,
-    //             //'ghi_chu' => '',
-    //         ]
-    //     );
-    //     $this->nhan_vien['hoa'] = App\NhanVien::firstOrCreate(
-    //         ['ten_dang_nhap' => 'hoa'],
-    //         [
-    //             'mat_khau' => Hash::make('123abc'),
-    //             'ten' => 'Nguyễn Văn Hùng',
-    //             'cmnd' => '272277194',
-    //             'ngay_sinh' => date('Y-m-d'),
-    //             'email' => 'hungvannguyen111@gmail.com',
-    //             'so_dien_thoai' => '0982503633',
-    //             'dia_chi' => '27/1I tổ 7 . Ấp Chánh 4, xã Tân Xuân , Huyện Hóc Môn, Tp Hồ Chí Minh',
-    //             'gioi_tinh' => 'M',
-    //             'chuc_vu' => 'Lập trình viên',
-    //             'quyen_han' => 0,
-    //             'luong' => 0,
-    //             //'ghi_chu' => '',
-    //         ]
-    //     );
-    //     $this->nhan_vien['ngoc'] = App\NhanVien::firstOrCreate(
-    //         ['ten_dang_nhap' => 'ngoc'],
-    //         [
-    //             'mat_khau' => Hash::make('123abc'),
-    //             'ten' => 'Lê Xuân Ngọc',
-    //             'cmnd' => '272277194',
-    //             'ngay_sinh' => date('Y-m-d'),
-    //             'email' => 'hungvannguyen181@gmail.com',
-    //             'so_dien_thoai' => '0982503629',
-    //             'dia_chi' => '27/1I tổ 7 . Ấp Chánh 5, xã Tân Xuân , Huyện Hóc Môn, Tp Hồ Chí Minh',
-    //             'gioi_tinh' => 'M',
-    //             'chuc_vu' => 'Lập trình viên',
-    //             'quyen_han' => 0,
-    //             'luong' => 0,
-    //             //'ghi_chu' => '',
-    //         ]
-    //     );
-    //     $this->nhan_vien['dung'] = App\NhanVien::firstOrCreate(
-    //         ['ten_dang_nhap' => 'dung'],
-    //         [
-    //             'mat_khau' => Hash::make('123abc'),
-    //             'ten' => 'Bùi Quý Dung',
-    //             'cmnd' => '272277194',
-    //             'ngay_sinh' => date('Y-m-d'),
-    //             'email' => 'hungvannguyen@gmail.com',
-    //             'so_dien_thoai' => '0982503623',
-    //             'dia_chi' => '27/1I tổ 7 . Ấp Chánh 6, xã Tân Xuân , Huyện Hóc Môn, Tp Hồ Chí Minh',
-    //             'gioi_tinh' => 'M',
-    //             'chuc_vu' => 'Lập trình viên',
-    //             'quyen_han' => 0,
-    //             'luong' => 0,
-    //             //'ghi_chu' => '',
-    //         ]
-    //     );
-    // }
     // public function loai_soi_seeder(){
     //     $this->loai_soi['cotton']=App\LoaiSoi::firstOrCreate([
     //         'ten'=>'Sợi Bông Cotton',

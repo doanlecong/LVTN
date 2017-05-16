@@ -19,6 +19,14 @@ class CreateCayVaiThanhPhamTable extends Migration
 
             $table->integer('cay_vai_moc_id')->unsigned()->nullable();
             $table->foreign('cay_vai_moc_id')->references('id')->on('cay_vai_moc');
+            $table->integer('lo_nhuom_id')->unsigned()->nullable();
+            $table->foreign('lo_nhuom_id')->references('id')->on('lo_nhuom');
+            $table->string('ghi_chu_nguon_goc')->nullable();
+
+            $table->integer('loai_vai_id')->unsigned();
+            $table->foreign('loai_vai_id')->references('id')->on('loai_vai');
+            $table->integer('mau_id')->unsigned();
+            $table->foreign('mau_id')->references('id')->on('mau');
             $table->double('kich_co')->unsigned()->nullable();
             $table->integer('so_met')->unsigned();
             $table->bigInteger('don_gia')->unsigned();
@@ -27,8 +35,7 @@ class CreateCayVaiThanhPhamTable extends Migration
             $table->dateTime('ngay_gio_nhap_kho');
             $table->integer('hoa_don_xuat_id')->unsigned()->nullable();
             $table->foreign('hoa_don_xuat_id')->references('id')->on('hoa_don_xuat');
-            $table->string('ghi_chu_nguon_goc')->nullable();
-            //$table->string('tinh_trang')->default('Chưa xuất');
+            $table->string('tinh_trang')->default('Chưa Xuất')->comment('Chưa Xuất/ Đã Xuất');
 
 
             $table->text('ghi_chu')->nullable();

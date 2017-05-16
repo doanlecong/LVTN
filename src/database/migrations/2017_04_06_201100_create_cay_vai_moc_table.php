@@ -31,7 +31,7 @@ class CreateCayVaiMocTable extends Migration
             $table->foreign('phieu_xuat_moc_id')->references('id')->on('phieu_xuat_moc');
             $table->integer('lo_nhuom_id')->unsigned()->nullable();
             $table->foreign('lo_nhuom_id')->references('id')->on('lo_nhuom');
-            //$table->string('tinh_trang')->default('Chưa xuất');
+            $table->string('tinh_trang')->default('Chưa Xuất')->comment('Chưa Xuất/ Đã Xuất');
 
 
             $table->text('ghi_chu')->nullable();
