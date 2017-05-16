@@ -47,7 +47,7 @@ class KhoThanhPhamController extends Controller
 
     public function getDataToUpdateCayThanhPham($id){
         $caythanhpham = CayVaiThanhPham::with('loai_vai')->findOrFail($id);
-        $mausac = $caythanhpham->lo_nhuom->mau->ten;
+        $mausac = $caythanhpham->mau->ten;
         return $caythanhpham;
 
     }
@@ -88,6 +88,11 @@ class KhoThanhPhamController extends Controller
         $cayvaimoc = CayVaiMoc::findOrFail($request->macaymoc);
         $cayvaimoc->lo_nhuom_id = $request->malonhuom;
         $cayvaimoc->save();
+
+        //update mau_id
+        if ($cayvaithanhpham->lo_nhuom != null) $cayvaithanhpham->mau_id = $cayvaithanhpham->lo_nhuom->mau_id;
+        $cayvaithanhpham->save();
+
         \Session::flash('success','Nhập Cây Vải Thành Công ');
         return redirect('manage_kho_kho_thanh_pham');
     }
@@ -141,6 +146,7 @@ class KhoThanhPhamController extends Controller
             $caymoclienquansaudo->save();
             
         }
+        //todo update mau_id on $caythanhpham
         $caythanhpham->save();
 
         \Session::flash('success','Cập Nhật Thông tin Cây Mộc Thành Công ');

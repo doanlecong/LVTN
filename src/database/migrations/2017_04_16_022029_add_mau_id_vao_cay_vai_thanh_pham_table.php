@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddLoNhuomIdVaoCayVaiThanhPhamTable extends Migration
+class AddTinhTrangVaoCayVaiThanhPhamTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddLoNhuomIdVaoCayVaiThanhPhamTable extends Migration
     public function up()
     {
         Schema::table('cay_vai_thanh_pham', function (Blueprint $table) {
-            $table->integer('lo_nhuom_id')->unsigned()->nullable()->after('don_gia');
+            $table->integer('mau_id')->unsigned()->nullable()->after('don_gia');
         });
     }
 
@@ -25,6 +25,6 @@ class AddLoNhuomIdVaoCayVaiThanhPhamTable extends Migration
      */
     public function down()
     {
-       
+        //
     }
 }

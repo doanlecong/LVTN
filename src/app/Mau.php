@@ -20,6 +20,9 @@ class Mau extends Model
 	public function don_hang_khach_hangs() {
 		return $this->hasMany('App\DonHangKhachHang');
 	}
+	public function cay_vai_thanh_phams() {
+		return $this->hasMany('App\CayVaiThanhPham');
+	}
 	public function lo_nhuoms() {
 		return $this->hasMany('App\LoNhuom');
 	}

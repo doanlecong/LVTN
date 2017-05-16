@@ -27,6 +27,7 @@ class CreateCayVaiThanhPhamTable extends Migration
             $table->dateTime('ngay_gio_nhap_kho');
             $table->integer('hoa_don_xuat_id')->unsigned()->nullable();
             $table->foreign('hoa_don_xuat_id')->references('id')->on('hoa_don_xuat');
+            $table->string('ghi_chu_nguon_goc')->nullable();
             //$table->string('tinh_trang')->default('Chưa xuất');
 
 

@@ -25,7 +25,7 @@ class CreateKhachHangTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('so_dien_thoai', 20)->unique();
             $table->string('dia_chi');
-            $table->bigInteger('cong_no')->unsigned()->default(0);
+            $table->bigInteger('cong_no')->default(0);
 
 
             $table->text('ghi_chu')->nullable();
