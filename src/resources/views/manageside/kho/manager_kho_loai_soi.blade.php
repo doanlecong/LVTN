@@ -1,5 +1,5 @@
 @extends('index')
-@section('title',' | Trang Quản Lý Tổng')
+@section('title',' | Trang Quản Lý Loại Sợi')
 @section('stylecss')
     <style>
         .modal-header{
@@ -42,13 +42,10 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">
-                Trang Quản Lý Tổng <small>Chào!!</small>
-            </h1>
             <ol class="breadcrumb">
                 <li class="active">
                     <div class="row">
-                        <i class="fa fa-dashboard fa-2x pull-left"> </i> <span class="pull-left" style="font-size:20px;"><strong>    Bảng Loại Sợi  </strong>  </span>
+                        <i class="fa fa-dashboard fa-2x pull-left"> </i> <span class="pull-left" style="font-size:20px;"><strong>    Trang Quản Lý Loại Sợi  </strong>  </span>
                     </div>
                       
                 </li>
@@ -64,7 +61,7 @@
                 <li class="active">
                     <div class ="row ">
                     
-                        <button type="button" id="addloaisoibtn" class="btn btn-primary" data-toggle="modal" data-target="#addloaisoimodal">Thêm Loại Sọi</button>
+                        <button type="button" id="addloaisoibtn" class="btn btn-primary" data-toggle="modal" data-target="#addloaisoimodal">Thêm Loại Sợi</button>
                         <!--Modal cua them loai soi -->
                         <div class="modal fade" id="addloaisoimodal" role="dialog">
                             <div class="vertical-helper">
@@ -147,7 +144,6 @@
                             </div>
                             
                         </div>
-                        <span class="label-info pull-right ">Cập nhật lần cuối: </h4>
                     </div>
                    
                 </li>
@@ -187,11 +183,7 @@
                                 <td>{{$loai_soi->khoi_luong_ton}}</td>
                                 <td>{{$loai_soi->so_thung_ton}}</td>
                                 <td>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" value="xoa">
-                                        </label>
-                                    </div>
+                                    <input type="checkbox" value="xoa">
                                 </td>
                             
                             </tr>
