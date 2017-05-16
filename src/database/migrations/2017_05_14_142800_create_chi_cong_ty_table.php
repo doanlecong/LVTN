@@ -15,7 +15,7 @@ class CreateChiCongTyTable extends Migration
     {
         Schema::create('chi_cong_ty', function (Blueprint $table) {
             $table->increments('id');
-            $table->smallInteger('nha_cung_cap_id')->unsigned();
+            $table->integer('nha_cung_cap_id')->unsigned();
             $table->foreign('nha_cung_cap_id')->references('id')->on('nha_cung_cap');
             $table->bigInteger('so_tien')->unsigned();
             $table->string('ngay_gio');
@@ -39,6 +39,6 @@ class CreateChiCongTyTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('chi_cong_ty');
     }
 }

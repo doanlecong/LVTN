@@ -15,7 +15,7 @@ class CreateThanhToanTable extends Migration
     {
         Schema::create('thanh_toan', function (Blueprint $table) {
             $table->increments('id');
-            $table->smallInteger('khach_hang_id')->unsigned();
+            $table->integer('khach_hang_id')->unsigned();
             $table->foreign('khach_hang_id')->references('id')->on('khach_hang');
             $table->bigInteger('so_tien')->unsigned();
             $table->string('ngay_gio');
