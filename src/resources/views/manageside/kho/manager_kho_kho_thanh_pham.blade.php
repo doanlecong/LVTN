@@ -305,6 +305,7 @@
                         <tr>
                             <th>Mã Cây Thành Phẩm</th>
                             <th>Mã Cây Mộc</th>
+                            <th>Loại vải</th>
                             <th>Màu</th>
                             <th>Khổ Vải (mét)</th>
                             <th>Số Mét</th>
@@ -324,7 +325,8 @@
                                 
                                 <td>{{$caythanhpham->id}}</td>
                                 <td>{{$caythanhpham->cay_vai_moc_id}}</td>
-                                <td style="background-color:{{$caythanhpham->lo_nhuom->mau->ma_mau}}">{{$caythanhpham->lo_nhuom->mau->ten}}</td>
+                                <td>{{$caythanhpham->loai_vai->ten}}</td>
+                                <td style="background-color:{{$caythanhpham->mau->ma_mau}}">{{$caythanhpham->mau->ten}}</td>
                                 <td>{{$caythanhpham->kich_co}}</td>
                                 <td>{{$caythanhpham->so_met}}</td>
                                 <td>{{$caythanhpham->don_gia}}</td>

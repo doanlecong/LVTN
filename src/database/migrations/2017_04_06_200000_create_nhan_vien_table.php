@@ -22,7 +22,7 @@ class CreateNhanVienTable extends Migration
 
 
             $table->string('ten');
-            $table->string('cmnd', 20);
+            $table->string('cmnd', 20)->unique();
             $table->date('ngay_sinh');
             $table->string('email')->unique()->nullable();
             $table->string('so_dien_thoai', 20)->unique();

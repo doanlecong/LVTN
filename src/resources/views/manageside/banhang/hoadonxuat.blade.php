@@ -71,7 +71,14 @@
                                     {{Form::label('don_hang_khach_hang_id', 'Đơn hàng khách hàng: *')}}
                                     <select class='form-control' required name='don_hang_khach_hang_id' id='don_hang_khach_hang_id' value=''>
                                     @foreach($dhkhs as $dhkh)
-                                        <option value="{{ $dhkh->id }}">#{{ $dhkh->id }} - {{ $dhkh->khach_hang->ten }} - {{ $dhkh->loai_vai->ten }} - {{ $dhkh->mau->ten }} - {{ $dhkh->tong_so_met }}</option>
+                                        <option value="{{ $dhkh->id }}">#{{ $dhkh->id }} - {{ $dhkh->khach_hang->ten }} - {{ $dhkh->loai_vai->ten }} - {{ $dhkh->mau->ten }} - {{ $dhkh->tong_so_met }}m
+                                        @if ($dhkh->kich_co)
+                                            - khổ {{ $dhkh->kich_co }}m
+                                        @endif
+                                        @if ($dhkh->tinh_trang == 'Mới')
+                                            (Mới)
+                                        @endif
+                                        </option>
                                     @endforeach
                                     </select>
                                 </div>
@@ -166,7 +173,6 @@
 
 
                                 <div class="form-group">
-                                    {{Form::label('danh_sach_cay_vai', 'Chọn những cây vải cần xuất: *')}}
                                     <div style='height:185px; overflow:auto;' id='danh_sach_cay_vai'>
                                     </div>
                                 </div>

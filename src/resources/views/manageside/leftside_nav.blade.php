@@ -73,6 +73,9 @@
             <li>
                 <a href="{{url('/manage_ban_hang_thanh_toan')}}">Thanh Toán</a>
             </li>
+            <li>
+                <a href="{{url('/tra_hang')}}">Trả Hàng</a>
+            </li>
         </ul>
     </li>
     <li>

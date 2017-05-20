@@ -79,11 +79,11 @@
                         </div>
                         <div class="form-group">
                             {{Form::label('tong_so_met', 'Tổng số mét (Mét): *')}}
-                            {{Form::number('tong_so_met', null, array('class'=>'form-control','required','step'=>'1'))}}
+                            {{Form::number('tong_so_met', null, array('class'=>'form-control','required','min'=>1,'step'=>'1'))}}
                         </div>
                         <div class="form-group">
-                            {{Form::label('chiet_khau', 'Chiết Khấu (%): ')}}
-                            {{Form::number('chiet_khau', null, array('class'=>'form-control','required','min'=>1,'max'=>100))}}
+                            {{Form::label('chiet_khau', 'Chiết Khấu (%): *')}}
+                            {{Form::number('chiet_khau', 0, array('class'=>'form-control','required','min'=>0,'max'=>100))}}
                         </div>
                         <div class="form-group">
                             {{Form::label('han_chot', 'Hạn chót:')}}

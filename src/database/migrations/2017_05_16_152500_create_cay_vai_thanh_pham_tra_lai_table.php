@@ -17,7 +17,7 @@ class CreateCayVaiThanhPhamTraLaiTable extends Migration
             $table->increments('id');
 
 
-            $table->integer('hoa_don_xuat_id')->unsigned()->nullable();
+            $table->integer('hoa_don_xuat_id')->unsigned();//->nullable();
             $table->foreign('hoa_don_xuat_id')->references('id')->on('hoa_don_xuat');
             $table->integer('cay_vai_thanh_pham_id')->unsigned();
             $table->foreign('cay_vai_thanh_pham_id')->references('id')->on('cay_vai_thanh_pham');
@@ -31,7 +31,7 @@ class CreateCayVaiThanhPhamTraLaiTable extends Migration
 
             $table->integer('kho_id')->unsigned();
             $table->foreign('kho_id')->references('id')->on('kho');
-            $table->dateTime('ngay_gio_nhap_kho'); //ngày giờ bị trả lại
+            $table->dateTime('ngay_gio_tra_lai'); //ngày giờ bị trả lại
             //$table->string('tinh_trang')->default('Vừa bị trả lại');
 
 

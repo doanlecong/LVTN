@@ -77,6 +77,9 @@ Route::get('ajax/manage_ban_hang_khach_hang/{id}','KhachHangController@getItemBy
 
 
 
+Route::resource('/tra_hang', 'TraHangController');
+
+
 
 Route::resource('/manage_ban_hang_don_hang','DonHangKhachHangController');
 Route::get('ajax/manage_ban_hang_don_hang_create','DonHangKhachHangController@createItemAjax');
@@ -100,3 +103,5 @@ Route::get('/manage_ban_hang',function(){
 Route::get('/manage_thong_ke',function (){
     return view('manageside.manager_thong_ke');
 });
+Route::get('thongke/test', 'ThongKeController@test');
+

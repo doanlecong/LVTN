@@ -25,7 +25,7 @@ class CreateDonHangKhachHangTable extends Migration
             $table->foreign('mau_id')->references('id')->on('mau');
             $table->double('kich_co')->unsigned()->nullable();
             $table->integer('tong_so_met')->unsigned();
-            $table->smallInteger('chiet_khau')->unsigned()->nullable();
+            $table->smallInteger('chiet_khau')->unsigned()->default(0);
             $table->dateTime('han_chot')->nullable();
             $table->dateTime('ngay_gio_dat_hang');
             $table->string('tinh_trang')->default('Mới');

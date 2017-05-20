@@ -19,13 +19,10 @@ class HoaDonXuatController extends Controller
      */
     public function index()
     {
-        //$donHangKhachHangs = DonHangKhachHang::pluck('id', 'id');
-        //$khachHangs = KhachHang::pluck('ten', 'id');
+        $dhkhs = DonHangKhachHang::whereIn('tinh_trang', ['Mới','Đang giao'])->get();
         $nhanViens = NhanVien::pluck('ten', 'id');
         return view('manageside.banhang.hoadonxuat')->withHdxs(HoaDonXuat::all())
-        ->withDhkhs(DonHangKhachHang::all())
-        //->with(compact('id', 'donHangKhachHangs'))
-        //->with(compact('id', 'khachHangs'))
+        ->withDhkhs($dhkhs)
         ->with(compact('id', 'nhanViens'))
         ->withCvtps(CayVaiThanhPham::where('hoa_don_xuat_id', null)->get());
     }
@@ -56,12 +53,9 @@ class HoaDonXuatController extends Controller
         $dhkh = DonHangKhachHang::findOrFail($id);
         $kho_vai = $dhkh->kich_co;
         $loai_vai_id = $dhkh->loai_vai_id;
-        $listLoNhuom = LoNhuom::where('mau_id', $dhkh->mau_id)->select('id')->get();
-        //return $listLoNhuom;
         $listCayVai = CayVaiThanhPham::where('loai_vai_id', $loai_vai_id)
-        ->whereIn('lo_nhuom_id', $listLoNhuom)
+        ->where('mau_id', $dhkh->mau_id)
         ->where('tinh_trang', 'Chưa Xuất')->where('kich_co',$kho_vai)
-        //->select('id')
         ->get();
         return $listCayVai;
     }
@@ -102,14 +96,15 @@ class HoaDonXuatController extends Controller
         // update tình trạng đơn hàng khách hàng
         $tong_so_met = 0;
         $tong_tien = 0;
+        if ($hoadonxuat->don_hang_khach_hang->tinh_trang = 'Mới')
+        {
+            $hoadonxuat->don_hang_khach_hang->tinh_trang = 'Đang giao';
+        }
         foreach ($hoadonxuat->don_hang_khach_hang->hoa_don_xuats as $hdx) {
             foreach ($hdx->cay_vai_thanh_phams as $cvtp) {
                 $tong_so_met += $cvtp->so_met;
                 $tong_tien += ($cvtp->so_met * $cvtp->don_gia);
             }
-        }
-        if ($hoadonxuat->don_hang_khach_hang->tong_so_met > $tong_so_met) {
-            $hoadonxuat->don_hang_khach_hang->tinh_trang = 'Đang giao';
         }
         if ($hoadonxuat->don_hang_khach_hang->tong_so_met <= $tong_so_met) {
             $hoadonxuat->don_hang_khach_hang->tinh_trang = 'Hoàn thành';

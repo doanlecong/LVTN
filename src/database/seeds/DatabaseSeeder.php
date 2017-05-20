@@ -16,111 +16,164 @@ class DatabaseSeeder extends Seeder
         $this->nhan_vien['1'] = App\NhanVien::firstOrCreate(
             ['ten_dang_nhap' => 'truc'],
             [
-                'mat_khau' => Hash::make('123abc'),
+                'mat_khau' => '123abc',//Hash::make('123abc'),
                 'ten' => 'Vũ Duy Trúc',
                 'cmnd' => '272277194',
-                'ngay_sinh' => date('Y-m-d'),
+                'ngay_sinh' => '1994-04-20',
                 //'email' => 'truc193204@gmail.com',
                 'so_dien_thoai' => '+84 163 222 8 000',
                 'dia_chi' => '606/49/2C, đường 3 tháng 2, phường 14, quận 10, Tp Hồ Chí Minh',
                 'gioi_tinh' => 'M',
                 'chuc_vu' => 'Lập trình viên',
                 'quyen_han' => 0,
-                'luong' => 0,
+                'luong' => 10000000,
                 //'ghi_chu' => '',
             ]
         );
-        $this->nhan_vien['doan'] = App\NhanVien::firstOrCreate(
+        $this->nhan_vien['2'] = App\NhanVien::firstOrCreate(
             ['ten_dang_nhap' => 'doan'],
             [
-                'mat_khau' => Hash::make('123abc'),
+                'mat_khau' => '123',//Hash::make('123abc'),
                 'ten' => 'Lê Công Doãn',
-                'cmnd' => '272277194',
-                'ngay_sinh' => date('Y-m-d'),
+                'cmnd' => '272277195',
+                'ngay_sinh' => '1994-01-01',
                 'email' => 'doanlecong1811@gmail.com',
                 'so_dien_thoai' => '0982503643',
                 'dia_chi' => '27/1I tổ 7 . Ấp Chánh 2, xã Tân Xuân , Huyện Hóc Môn, Tp Hồ Chí Minh',
                 'gioi_tinh' => 'M',
                 'chuc_vu' => 'Lập trình viên',
                 'quyen_han' => 0,
-                'luong' => 0,
+                'luong' => 7000000,
                 //'ghi_chu' => '',
             ]
         );
-        $this->nhan_vien['hung'] = App\NhanVien::firstOrCreate(
+        $this->nhan_vien['3'] = App\NhanVien::firstOrCreate(
             ['ten_dang_nhap' => 'hung'],
             [
-                'mat_khau' => Hash::make('123abc'),
+                'mat_khau' => 'abc',
                 'ten' => 'Nguyễn Văn Hùng',
-                'cmnd' => '272277194',
-                'ngay_sinh' => date('Y-m-d'),
+                'cmnd' => '123456001',
+                'ngay_sinh' => '1992-12-31',
                 'email' => 'hungvannguyen1811@gmail.com',
                 'so_dien_thoai' => '0982503645',
                 'dia_chi' => '27/1I tổ 7 . Ấp Chánh 3, xã Tân Xuân , Huyện Hóc Môn, Tp Hồ Chí Minh',
                 'gioi_tinh' => 'M',
                 'chuc_vu' => 'Lập trình viên',
                 'quyen_han' => 0,
-                'luong' => 0,
+                'luong' => 6000000,
                 //'ghi_chu' => '',
             ]
         );
-        $this->nhan_vien['hoa'] = App\NhanVien::firstOrCreate(
+        $this->nhan_vien['4'] = App\NhanVien::firstOrCreate(
             ['ten_dang_nhap' => 'hoa'],
             [
-                'mat_khau' => Hash::make('123abc'),
-                'ten' => 'Nguyễn Văn Hùng',
-                'cmnd' => '272277194',
-                'ngay_sinh' => date('Y-m-d'),
+                'mat_khau' => '123abc',
+                'ten' => 'Nguyễn Thị Hoa',
+                'cmnd' => '123456002',
+                'ngay_sinh' => '1996-04-05',
                 'email' => 'hungvannguyen111@gmail.com',
                 'so_dien_thoai' => '0982503633',
                 'dia_chi' => '27/1I tổ 7 . Ấp Chánh 4, xã Tân Xuân , Huyện Hóc Môn, Tp Hồ Chí Minh',
-                'gioi_tinh' => 'M',
+                'gioi_tinh' => 'F',
                 'chuc_vu' => 'Lập trình viên',
                 'quyen_han' => 0,
-                'luong' => 0,
+                'luong' => 7500000,
                 //'ghi_chu' => '',
             ]
         );
-        $this->nhan_vien['ngoc'] = App\NhanVien::firstOrCreate(
+        $this->nhan_vien['5'] = App\NhanVien::firstOrCreate(
             ['ten_dang_nhap' => 'ngoc'],
             [
-                'mat_khau' => Hash::make('123abc'),
+                'mat_khau' => 'a',
                 'ten' => 'Lê Xuân Ngọc',
-                'cmnd' => '272277194',
-                'ngay_sinh' => date('Y-m-d'),
+                'cmnd' => '123456003',
+                'ngay_sinh' => '1994-04-08',
                 'email' => 'hungvannguyen181@gmail.com',
                 'so_dien_thoai' => '0982503629',
                 'dia_chi' => '27/1I tổ 7 . Ấp Chánh 5, xã Tân Xuân , Huyện Hóc Môn, Tp Hồ Chí Minh',
                 'gioi_tinh' => 'M',
                 'chuc_vu' => 'Lập trình viên',
                 'quyen_han' => 0,
-                'luong' => 0,
+                'luong' => 6600000,
                 //'ghi_chu' => '',
             ]
         );
-        $this->nhan_vien['dung'] = App\NhanVien::firstOrCreate(
+        $this->nhan_vien['6'] = App\NhanVien::firstOrCreate(
             ['ten_dang_nhap' => 'dung'],
             [
-                'mat_khau' => Hash::make('123abc'),
+                'mat_khau' => '123',
                 'ten' => 'Bùi Quý Dung',
-                'cmnd' => '272277194',
-                'ngay_sinh' => date('Y-m-d'),
+                'cmnd' => '123456004',
+                'ngay_sinh' => '1999-09-09',
                 'email' => 'hungvannguyen@gmail.com',
                 'so_dien_thoai' => '0982503623',
                 'dia_chi' => '27/1I tổ 7 . Ấp Chánh 6, xã Tân Xuân , Huyện Hóc Môn, Tp Hồ Chí Minh',
                 'gioi_tinh' => 'M',
                 'chuc_vu' => 'Lập trình viên',
                 'quyen_han' => 0,
-                'luong' => 0,
+                'luong' => 5800000,
                 //'ghi_chu' => '',
             ]
         );
     }
 
+    public function nha_cung_cap_seeder(){
+        $this->nha_cung_cap['0'] = App\NhaCungCap::firstOrCreate([
+            'ten' => 'Hải Yến',
+            'dia_chi' => 'Số 8, Đường số 6, P.Tam Phú, Q.Thủ Đức, Tp.HCM',
+            'email' => 'ctytnhhsoihaiyen@gmail.com',
+            'so_dien_thoai' => '09320410417',
+            'fax' => '(08) 38970962',
+            'cong_no' => 0,
+        ]);
+        $this->nha_cung_cap['1'] = App\NhaCungCap::firstOrCreate([
+            'ten' => 'Nam Hưng',
+            'dia_chi' => 'Số 13, Đường 48C, P.Tân Tạo, Q.Bình Tân, Tp.HCM',
+            'email' => 'ctydetmaynamhung@yahoo.com',
+            'so_dien_thoai' => '(08) 37507398',
+            //'fax'=> '(08) 38970962',
+            'cong_no' => 0,
+        ]);
+        $this->nha_cung_cap['2'] = App\NhaCungCap::firstOrCreate([
+            'ten' => 'Topnet Việt Nam',
+            'dia_chi' => '122 Đường Nguyễn Hoàng, P.An Phú, Q.2, Tp.HCM',
+            'email' => 'salesvietnam.topnet@gmail.com',
+            'so_dien_thoai' => '(08) 62811102',
+            //'fax'=> '(08) 38970962',
+            'cong_no' => 0,
+        ]);
+        $this->nha_cung_cap['3'] = App\NhaCungCap::firstOrCreate([
+            'ten' => 'Việt Thắng Lợi',
+            'dia_chi' => '23/6 Nguyễn Ảnh Thủ, Ấp Hưng Lân, Xã Bà Điểm, Huyện Hóc Môn, Tp.HCM',
+            'email' => 'sales@vietthangloi.vn',
+            'so_dien_thoai' => '(08) 37182234',
+            'fax' => '(08) 37182224',
+            'cong_no' => 0,
+        ]);
+        $this->nha_cung_cap['4'] = App\NhaCungCap::firstOrCreate([
+            'ten' => 'Huệ Đạt',
+            'dia_chi' => 'Số 85 Phạm Văn Xảo, P.Phú Thọ Hòa, Q.Tân Phú, Tp.HCM',
+            'email' => 'congtyhuedat@gmail.com',
+            'so_dien_thoai' => '(08) 39780228',
+            'fax' => '(08) 39780228',
+            'cong_no' => 0,
+        ]);
+        $this->nha_cung_cap['5'] = App\NhaCungCap::firstOrCreate([
+            'ten' => 'Nam Việt',
+            'dia_chi' => 'Số 86, Tổ 2, Khu phố Bà Tri, P.Tân Hiệp, Xã Tân Uyên, Tỉnh Bình Dương',
+            'email' => 'sales@navipoly.com',
+            'so_dien_thoai' => '+84 0650 3655361',
+            'fax' => '+84 650 3655360',
+            'cong_no' => 0,
+        ]);
+    }
+
+
     public function run()
     {
         //$this->call(UsersTableSeeder::class);
         $this->nhan_vien_seeder();
+        $this->nha_cung_cap_seeder();
     }
 
     // public function loai_soi_seeder(){
@@ -204,63 +257,6 @@ class DatabaseSeeder extends Seeder
     //         'nhan_vien_quan_ly_id' => $this->nhan_vien['hung']->id,
     //         //'ghi_chu' => '',
     //     ]);
-    // }
-    // public function nha_cung_cap_seeder(){
-    //     $this->nha_cung_cap['hai_yen'] = App\NhaCungCap::firstOrCreate([
-    //         'ten'=>'Hải Yến',
-    //         'dia_chi'=>'Số 8, Đường số 6, P.Tam Phú, Q.Thủ Đức, Tp.HCM',
-    //         'email'=> 'ctytnhhsoihaiyen@gmail.com',
-    //         'so_dien_thoai'=> '0932041041',
-    //         'fax'=> '(08) 38970962',
-    //         'cong_no'=>44000000,
-
-    //     ]);
-    //     $this->nha_cung_cap['nam_hung'] = App\NhaCungCap::firstOrCreate([
-    //         'ten'=>'Nam Hưng',
-    //         'dia_chi'=>'Số 13, Đường 48C, P.Tân Tạo, Q.Bình Tân, Tp.HCM',
-    //         'email'=> 'ctydetmaynamhung@yahoo.com',
-    //         'so_dien_thoai'=> '(08) 37507398',
-    //         //'fax'=> '(08) 38970962',
-    //         'cong_no'=>11200000,
-            
-    //     ]);
-    //     $this->nha_cung_cap['top_net'] = App\NhaCungCap::firstOrCreate([
-    //         'ten'=>'Topnet Việt Nam',
-    //         'dia_chi'=>'122 Đường Nguyễn Hoàng, P.An Phú, Q.2, Tp.HCM',
-    //         'email'=> 'salesvietnam.topnet@gmail.com',
-    //         'so_dien_thoai'=> '(08) 62811102',
-    //         //'fax'=> '(08) 38970962',
-    //         'cong_no'=>59000000,
-            
-    //     ]);
-    //     $this->nha_cung_cap['thang_loi'] = App\NhaCungCap::firstOrCreate([
-    //         'ten'=>'Việt Thắng Lợi',
-    //         'dia_chi'=>'23/6 Nguyễn Ảnh Thủ, Ấp Hưng Lân, Xã Bà Điểm, Huyện Hóc Môn, Tp.HCM',
-    //         'email'=> 'sales@vietthangloi.vn',
-    //         'so_dien_thoai'=> '(08) 37182234',
-    //         'fax'=> '(08) 37182224',
-    //         'cong_no'=>66000000,
-            
-    //     ]);
-    //     $this->nha_cung_cap['hue_dat'] = App\NhaCungCap::firstOrCreate([
-    //         'ten'=>'Huệ Đạt',
-    //         'dia_chi'=>'Số 85 Phạm Văn Xảo, P.Phú Thọ Hòa, Q.Tân Phú, Tp.HCM',
-    //         'email'=> 'congtyhuedat@gmail.com',
-    //         'so_dien_thoai'=> '(08) 39780228',
-    //         'fax'=> '(08) 39780228',
-    //         'cong_no'=>20200000,
-            
-    //     ]);
-    //     $this->nha_cung_cap['nam_viet'] = App\NhaCungCap::firstOrCreate([
-    //         'ten'=>'Nam Việt',
-    //         'dia_chi'=>'Số 86, Tổ 2, Khu phố Bà Tri, P.Tân Hiệp, Xã Tân Uyên, Tỉnh Bình Dương',
-    //         'email'=> 'sales@navipoly.com',
-    //         'so_dien_thoai'=> '+84 0650 3655361',
-    //         'fax'=> '+84 650 3655360',
-    //         'cong_no'=>52000000,
-            
-    //     ]);
-        
     // }
     // public function don_hang_cong_ty_seeder(){
     //     $this->don_hang_cong_ty['don_hang_1'] = App\DonHangCongTy::firstOrCreate([
