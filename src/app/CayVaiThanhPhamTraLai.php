@@ -24,9 +24,6 @@ class CayVaiThanhPhamTraLai extends Model
 	public function mau(){
 		return $this->belongsTo('App\Mau');
 	}
-	public function kho() {
-		return $this->belongsTo('App\Kho');
-	}
 
 
 	//

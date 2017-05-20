@@ -291,7 +291,6 @@
                             </div>
                             
                         </div>
-                        <span class="label-info pull-right ">Cập nhật lần cuối: </h4>
                     </div>
                 
                 </li>

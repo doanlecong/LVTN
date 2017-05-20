@@ -23,9 +23,6 @@ class Kho extends Model
 	public function cay_vai_thanh_phams() {
 		return $this->hasMany('App\CayVaiThanhPham');
 	}
-	public function cay_vai_thanh_pham_tra_lais() {
-		return $this->hasMany('App\CayVaiThanhPhamTraLai');
-	}
 	public function hoa_don_nhaps() {
 		return $this->hasMany('App\HoaDonNhap');
 	}

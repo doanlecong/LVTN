@@ -29,8 +29,6 @@ class CreateCayVaiThanhPhamTraLaiTable extends Migration
             $table->integer('mau_id')->unsigned();//->nullable();
             $table->foreign('mau_id')->references('id')->on('mau');            
 
-            $table->integer('kho_id')->unsigned();
-            $table->foreign('kho_id')->references('id')->on('kho');
             $table->dateTime('ngay_gio_tra_lai'); //ngày giờ bị trả lại
             //$table->string('tinh_trang')->default('Vừa bị trả lại');
 

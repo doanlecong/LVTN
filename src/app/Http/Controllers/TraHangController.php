@@ -21,7 +21,7 @@ class TraHangController extends Controller
     public function create()
     {
         return view('manageside.banhang.trahang_create')
-        ->withHoadonxuats(HoaDonXuat::all())
+        // ->withHoadonxuats(HoaDonXuat::all())
         ->withLoaivais(LoaiVai::select('id','ten')->get())
         ->withMaus(Mau::select('id','ten')->get())
         ->withCayvais(CayVaiThanhPham::get())
@@ -30,7 +30,10 @@ class TraHangController extends Controller
 
     public function store(Request $request)
     {
-        //
+        
+        return $request->cayvai;
+
+        return redirect('/tra_hang');
     }
 
     public function show($id)

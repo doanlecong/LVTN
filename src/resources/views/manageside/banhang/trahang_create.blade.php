@@ -66,47 +66,47 @@
             <div class="row" style="padding:10px;">
                 
                 <div class='row'>
-                    <div class='col-sm-5'>
+                    <div class='col-sm-4'>
                         <div class='row'>
-                            <div class='col-sm-6'>
-                                <fieldset>
-                                    <legend>Hóa đơn xuất</legend>
-                                    @foreach ($hoadonxuats as $hdx)
-                                        <input type="checkbox" name='hoadonxuat[]' value='{{$hdx->id}}' /> #{{$hdx->id}} ({{$hdx->don_hang_khach_hang_id}}) - {{$hdx->don_hang_khach_hang->loai_vai->ten}} - {{$hdx->don_hang_khach_hang->mau->ten}}
+                            <fieldset>
+                                <legend style='margin-bottom:5px;'>Lọc theo: <i>Loại vải + Màu</i></legend>
+                                <div class='col-sm-6'>
+                                    @foreach ($loaivais as $lv)
+                                        <input type="checkbox" name='loaivai[]' value='{{$lv->id}}' /> {{$lv->ten}}
                                         <br/>
                                     @endforeach
-                                </fieldset>
-                            </div>
-                            <div class='col-sm-6 row'>
-                                <fieldset>
-                                    <legend>Loại vải + Màu</legend>
-                                    <div class='col-sm-6'>
-                                        @foreach ($loaivais as $lv)
-                                            <input type="checkbox" name='loaivai[]' value='{{$lv->id}}' /> #{{$lv->id}} - {{$lv->ten}}
-                                            <br/>
-                                        @endforeach
-                                    </div>
-                                    <div class='col-sm-6'>
-                                        @foreach ($maus as $m)
-                                            <input type="checkbox" name='mau[]' value='{{$m->id}}' /> #{{$m->id}} - {{$m->ten}}
-                                            <br/>
-                                        @endforeach
-                                    </div>
-                                </fieldset>
-                            </div>
+                                </div>
+                                <div class='col-sm-6'>
+                                    @foreach ($maus as $m)
+                                        <input type="checkbox" name='mau[]' value='{{$m->id}}' /> {{$m->ten}}
+                                        <br/>
+                                    @endforeach
+                                </div>
+                            </fieldset>
+
                         </div>
                     </div>
+
+
+                    <div class='col-sm-1'></div>
+
+
                     <div class='row col-sm-7'>
                         {{Form::open(['url'=>'tra_hang', 'method'=>'POST', 'class'=>'form-group'])}}
                             <fieldset>
-                                <legend>Danh sách cây vải đã xuất</legend>
-                                @foreach ($cayvais as $cv)
-                                    <input type="checkbox" name='cayvai[]' value='{{$cv->id}}' /> #{{$cv->id}} - {{$cv->loai_vai->ten}} - {{$cv->mau->ten}} - {{$cv->so_met}}m * {{$cv->don_gia}}vnd
-                                    @if ($cv->kich_co)
-                                        (khổ: {{$cv->kich_co}}m)
-                                    @endif
-                                    <br/>
-                                @endforeach
+                                <legend style='margin-bottom:5px;'>Danh sách cây vải đã xuất</legend>
+                                <div id='danhsachcayvai' class='col-sm-12'>
+                                    @foreach ($cayvais as $cv)
+                                        <input type="checkbox" id='cayvai{{$cv->id}}' name='cayvai[]' value='{{$cv->id}}' />
+                                        <label for='cayvai{{$cv->id}}'>
+                                            #{{$cv->id}} - {{$cv->loai_vai->ten}} - {{$cv->mau->ten}} - {{$cv->so_met}}m * {{$cv->don_gia}}vnd
+                                            @if ($cv->kich_co)
+                                                (khổ: {{$cv->kich_co}}m)
+                                            @endif
+                                        </label>
+                                        <br/>
+                                    @endforeach
+                                </div>
                             </fieldset>
                             
                             <div class='row' style='margin-top:15px'>
