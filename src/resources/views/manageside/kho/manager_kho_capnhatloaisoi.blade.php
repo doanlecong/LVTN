@@ -6,9 +6,6 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">
-                Trang Quản Lý Tổng <small>Chào!!</small>
-            </h1>
             <ol class="breadcrumb">
                 <li class="active">
                     <i class="fa fa-dashboard fa-lg"></i><span><strong>    Danh Sách Các Cây Vải Thành Phẩm </strong></span> 
@@ -38,7 +35,7 @@
                                 
                                 <td>{{$caythanhpham->id}}</td>
                                 <td>{{$caythanhpham->cay_vai_moc_id}}</td>
-                                <td>{{$caythanhpham->lo_nhuom->ten}}</td>
+                                <td>{{$caythanhpham->mau->ten}}</td>
                                 <td>{{$caythanhpham->so_met}}</td>
                                 <td>{{$caythanhpham->don_gia}}</td>
                                 <td>{{ $caythanhpham->don_gia*$caythanhpham->so_met}}</td>

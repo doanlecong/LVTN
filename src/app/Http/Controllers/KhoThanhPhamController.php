@@ -90,7 +90,7 @@ class KhoThanhPhamController extends Controller
         $cayvaimoc->save();
 
         //update mau_id
-        if ($cayvaithanhpham->lo_nhuom != null) $cayvaithanhpham->mau_id = $cayvaithanhpham->lo_nhuom->mau_id;
+        if ($cayvaithanhpham->lo_nhuom != null) $cayvaithanhpham->mau_id = $cayvaithanhpham->mau_id;
         $cayvaithanhpham->save();
 
         \Session::flash('success','Nhập Cây Vải Thành Công ');

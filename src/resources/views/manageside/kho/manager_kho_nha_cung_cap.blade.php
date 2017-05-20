@@ -42,9 +42,6 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">
-                Trang Quản Lý Tổng <small>Chào!!</small>
-            </h1>
             <ol class="breadcrumb">
                 <li class="active">
                     <div class="row">

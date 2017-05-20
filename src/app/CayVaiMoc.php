@@ -35,10 +35,4 @@ class CayVaiMoc extends Model
 	public function cay_vai_thanh_pham() {
 		return $this->hasOne('App\CayVaiThanhPham');
 	}
-
-
-	//--//--//--//
-	public function mau() {
-		return $this->lo_nhuom()->mau;
-	}
 }
