@@ -72,13 +72,19 @@
                                 <legend style='margin-bottom:5px;'>Lọc theo: <i>Loại vải + Màu</i></legend>
                                 <div class='col-sm-6'>
                                     @foreach ($loaivais as $lv)
-                                        <input type="checkbox" name='loaivai[]' value='{{$lv->id}}' /> {{$lv->ten}}
+                                        <input type="checkbox" id='loaivai{{$lv->id}}' name='loaivai[]' value='{{$lv->id}}' />
+                                        <label for='loaivai{{$lv->id}}'>
+                                            {{$lv->ten}}
+                                        </label>
                                         <br/>
                                     @endforeach
                                 </div>
                                 <div class='col-sm-6'>
                                     @foreach ($maus as $m)
-                                        <input type="checkbox" name='mau[]' value='{{$m->id}}' /> {{$m->ten}}
+                                        <input type="checkbox" id='mau{{$m->id}}' name='mau[]' value='{{$m->id}}' />
+                                        <label for='mau{{$m->id}}'>
+                                            {{$m->ten}}
+                                        </label>
                                         <br/>
                                     @endforeach
                                 </div>
@@ -97,8 +103,8 @@
                                 <legend style='margin-bottom:5px;'>Danh sách cây vải đã xuất</legend>
                                 <div id='danhsachcayvai' class='col-sm-12'>
                                     @foreach ($cayvais as $cv)
-                                        <input type="checkbox" id='cayvai{{$cv->id}}' name='cayvai[]' value='{{$cv->id}}' />
-                                        <label for='cayvai{{$cv->id}}'>
+                                        <input type="checkbox" id="cayvai{{$cv->id}}" name="cayvai[]" value="{{$cv->id}}" />
+                                        <label for="cayvai{{$cv->id}}">
                                             #{{$cv->id}} - {{$cv->loai_vai->ten}} - {{$cv->mau->ten}} - {{$cv->so_met}}m * {{$cv->don_gia}}vnd
                                             @if ($cv->kich_co)
                                                 (khổ: {{$cv->kich_co}}m)
@@ -123,5 +129,50 @@
             </div>
         </div>
     </div>
+
+
+<script>
+$(document).ready(function() {
+    $('[name="loaivai[]"], [name="mau[]"]').change(function () {
+        var loaivai = $('[name="loaivai[]"]').serialize();
+        var mau = $('[name="mau[]"]').serialize();
+        if (loaivai.length && mau.length) {
+            var sentData = loaivai + '&' + mau;
+        }
+        else {
+            var sentData = loaivai + mau;
+        }
+            $.ajax({
+                method: 'get',
+                async: false,
+                url: '/ajax/tra_hang/danh_sach_cay_vai?' + sentData,
+                success: function(data) {
+                    var newContent = '';
+
+                    for (var i=0; i<data.length; ++i) {
+                        var it = data[i];
+                        newContent += '<input type="checkbox" id="cayvai'+ it['id'] +'" name="cayvai[]" value="'+ it['id'] +'" />' +
+                                      '<label for="cayvai'+ it['id'] +'">' +
+                                      '&nbsp;#'+ it['id'] +' - '+ it['ten_loai_vai'] +' - '+ it['ten_mau'] +' - '+ it['so_met'] +'m * '+ it['don_gia'] +'vnd';
+                        if (it['kich_co']) {
+                            newContent += '(khổ: '+ it['kich_co'] +'m)';
+                        }
+                        newContent += '</label> <br/>';
+                    };
+
+                    $('#danhsachcayvai').html(newContent);
+                },
+                fail: function() {
+                    alert('Server không trả vể Kết Quả!!!');
+                }
+            });
+
+        $('[name="mau[]"]').each(function (index, element) {
+            //
+        });
+    });
+});
+</script>
+
 
 @endsection

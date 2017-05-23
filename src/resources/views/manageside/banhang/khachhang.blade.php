@@ -222,7 +222,7 @@
         $(form+' #id').val(data.id);
         $(form+' #ten').val(data.ten);
         $(form+' #ten_dang_nhap').val(data.ten_dang_nhap);
-        //$(form+' #mat_khau').val(data.mat_khau);
+        $(form+' #mat_khau').val(data.mat_khau);
         $(form+' #dia_chi').val(data.dia_chi);
         $(form+' #email').val(data.email);
         $(form+' #so_dien_thoai').val(data.so_dien_thoai);

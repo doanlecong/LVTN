@@ -78,6 +78,7 @@ Route::get('ajax/manage_ban_hang_khach_hang/{id}','KhachHangController@getItemBy
 
 
 Route::resource('/tra_hang', 'TraHangController');
+Route::get('/ajax/tra_hang/danh_sach_cay_vai/', 'TraHangController@danhSachCayVaiAjax');
 
 
 
