@@ -96,7 +96,7 @@ class HoaDonXuatController extends Controller
         // update tình trạng đơn hàng khách hàng
         $tong_so_met = 0;
         $tong_tien = 0;
-        if ($hoadonxuat->don_hang_khach_hang->tinh_trang = 'Mới')
+        if ($hoadonxuat->don_hang_khach_hang->tinh_trang == 'Mới')
         {
             $hoadonxuat->don_hang_khach_hang->tinh_trang = 'Đang giao';
         }
@@ -113,19 +113,19 @@ class HoaDonXuatController extends Controller
         $hoadonxuat->don_hang_khach_hang->save();
         $tong_tien_sau_chiet_khau = $tong_tien*(100-($hoadonxuat->don_hang_khach_hang->chiet_khau))/100;
         //update công nợ khách hàng sau khi giao vải
-        if($hoadonxuat->khach_hang->ghi_chu !=NULL){
+        if ($hoadonxuat->khach_hang->ghi_chu != NULL) {
             $duno = intval($hoadonxuat->khach_hang->ghi_chu);
             $kq = $duno - $tong_tien_sau_chiet_khau; 
             if($kq==0){
-                $hoadonxuat->khach_hang->ghi_chu =NULL;
+                $hoadonxuat->khach_hang->ghi_chu = NULL;
 
             }else if($kq > 0 ) {
-                $hoadonxuat->khach_hang->ghi_chu =strval($kq);
+                $hoadonxuat->khach_hang->ghi_chu = strval($kq);
             }else if($kq < 0 ){
-                $hoadonxuat->khach_hang->ghi_chu =NULL;
+                $hoadonxuat->khach_hang->ghi_chu = NULL;
                 $hoadonxuat->khach_hang->cong_no = $kq+(-2*$kq);                
             }
-        }else {
+        } else {
             $hoadonxuat->khach_hang->cong_no += $tong_tien_sau_chiet_khau;
         }
 

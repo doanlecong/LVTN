@@ -204,7 +204,7 @@
                                 <td>{{$khachhang->email}}</td>
                                 <td>{{$khachhang->so_dien_thoai}}</td>
                                 <td>{{$khachhang->cong_no}}</td>
-                                <td>@if($khachhang->ghi_chu !=NULL ){{$khachhang->ghi_chu}} @else 0 @endif</td>
+                                <td>{{$khachhang->du_tai_khoan}}</td>
                                 <td>
                                     <input type="checkbox" value='{{$khachhang->deleted_at != null}}' disabled value="xoa">
                                 </td>

@@ -149,6 +149,10 @@ $(document).ready(function() {
                 success: function(data) {
                     var newContent = '';
 
+                    if (data.length == 0) {
+                        newContent = 'KHÔNG TÌM ĐƯỢC CÂY VẢI NÀO PHÙ HỢP THUỘC TÍNH BẠN CHỌN';
+                    }
+
                     for (var i=0; i<data.length; ++i) {
                         var it = data[i];
                         newContent += '<input type="checkbox" id="cayvai'+ it['id'] +'" name="cayvai[]" value="'+ it['id'] +'" />' +

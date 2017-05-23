@@ -204,6 +204,7 @@
                         <th>Tổng số mét</th>
                         <th>Chiết Khấu (%)</th>
                         <th>Đã giao</th>
+                        <th>Bị trả lại</th>
                         <th>Còn lại</th>
                         <th>Hạn chót</th>
                         <th>Ngày giờ đặt hàng</th>
@@ -226,6 +227,7 @@
                             <td>{{$dhkh->tong_so_met}}</td>
                             <td>{{$dhkh->chiet_khau}}</td>
                             <td>{{$dhkh->so_met_da_giao}}</td>
+                            <td>{{$dhkh->so_met_bi_tra_lai}}</td>
                             <td>{{$dhkh->so_met_con_lai}}</td>
                             <td>{{$dhkh->han_chot}}</td>
                             <td>{{$dhkh->ngay_gio_dat_hang}}</td>

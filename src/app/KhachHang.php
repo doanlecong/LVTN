@@ -22,4 +22,7 @@ class KhachHang extends Model
 	public function thu_chis() {
 		return $this->hasMany('App\ThuChi');
 	}
+	public function thanh_toans() {
+		return $this->hasMany('App\ThanhToan');
+	}
 }

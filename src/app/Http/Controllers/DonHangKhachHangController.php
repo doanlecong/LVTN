@@ -20,13 +20,28 @@ class DonHangKhachHangController extends Controller
         $dhkhs = DonHangKhachHang::all();
         foreach ($dhkhs as $dh) {
             $tong_so_met = 0;
+            $tong_so_met_tra_lai = 0;
             foreach ($dh->hoa_don_xuats as $hdx) {
                 foreach ($hdx->cay_vai_thanh_phams as $cvtp) {
                     $tong_so_met += $cvtp->so_met;
+                    if ($cvtp->tinh_trang == 'Bị Trả Lại') {
+                        $tong_so_met_tra_lai += $cvtp->so_met;
+                    }
                 }
             }
             $dh->so_met_da_giao = $tong_so_met;
-            $dh->so_met_con_lai = max(0, $dh->tong_so_met - $tong_so_met);
+            $dh->so_met_bi_tra_lai = $tong_so_met_tra_lai;
+            $dh->so_met_con_lai = max(0, $dh->tong_so_met - $tong_so_met + $tong_so_met_tra_lai);
+
+            if ($dh->so_met_con_lai > 0)
+            {
+                $dh->tinh_trang = 'Đang giao';
+            }
+            else
+            {
+                $dh->tinh_trang = 'Hoàn thành';
+            }
+
         }
 
         $khachHangs = KhachHang::pluck('ten', 'id');

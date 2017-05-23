@@ -14,7 +14,46 @@ class KhachHangController extends Controller
      */
     public function index()
     {
-        $list_khachhang= KhachHang::all();
+        $list_khachhang = KhachHang::all();
+
+        // dh:đơn hàng, kh:khách hàng, hdx:hóa đơn xuất, cv:cây vải thành phẩm
+        foreach ($list_khachhang as $khachhang) {
+            $kh = KhachHang::find($khachhang->id);
+
+            // tính tổng tiền khách đã mua hàng
+            $tien_mua = 0;
+            $list_dh = $kh->don_hang_khach_hangs;
+            foreach ($list_dh as $dh) {
+                $tong_tien_don_hang = 0;
+
+                $list_hdx = $dh->hoa_don_xuats;
+                foreach ($list_hdx as $hdx) {
+                    $list_cv = $hdx->cay_vai_thanh_phams;
+                    foreach ($list_cv as $cv) {
+                        if ($cv->tinh_trang == 'Đã Xuất') {
+                            $tong_tien_don_hang += $cv->so_met * $cv->don_gia;
+                        }
+                    }
+                }
+
+                if ($dh->chiet_khau == null) {
+                    $dh->chiet_khau = 0;
+                    $dh->save();
+                }
+                $tien_mua += $tong_tien_don_hang * (100 - $dh->chiet_khau)/100;
+            }
+
+            //tính tổng tiền khách đã thanh toán
+            $tien_thanh_toan = 0;
+            foreach ($kh->thanh_toans as $tt) {
+                $tien_thanh_toan += $tt->so_tien;
+            }
+
+            //công nợ = tiền mua - thanh toán
+            $khachhang->cong_no = max( 0, $tien_mua - $tien_thanh_toan );
+            $khachhang->du_tai_khoan = max( 0, $tien_thanh_toan - $tien_mua );
+        }
+
         return view('manageside.banhang.khachhang')->withList_khachhang($list_khachhang);
     }
 

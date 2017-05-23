@@ -71,8 +71,30 @@ class TraHangController extends Controller
             //cập nhật tình trạng cho cây vải thành phẩm = bị trả lại
             $cv->tinh_trang = 'Bị Trả Lại';
             //cập nhật công nợ: hoàn lại tiền cho khách hàng (giảm công nợ)
+
             
             //cập nhật lại tình trạng đơn hàng (thường sẽ là đang giao)
+            $dh = $cv->hoa_don_xuat->don_hang_khach_hang;
+            $tong_so_met = 0;
+            $tong_so_met_tra_lai = 0;
+            foreach ($dh->hoa_don_xuats as $hdx) {
+                foreach ($hdx->cay_vai_thanh_phams as $cvtp) {
+                    $tong_so_met += $cvtp->so_met;
+                    if ($cvtp->tinh_trang == 'Bị Trả Lại')
+                        $tong_so_met_tra_lai += $cvtp->so_met;
+                }
+            }
+            // $so_met_da_giao = $tong_so_met;
+            $so_met_con_lai = max(0, $dh->tong_so_met - $tong_so_met + $tong_so_met_tra_lai);
+
+            if ($so_met_con_lai > 0)
+            {
+                $dh->tinh_trang = 'Đang giao';
+            }
+            else
+            {
+                $dh->tinh_trang = 'Hoàn thành';
+            }
 
             $dsCayVaiTraLai[$key]->save();
             $cv->save();
