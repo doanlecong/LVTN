@@ -103,7 +103,6 @@
                             
                         </div>
                         
-                        <button type="button" id="capnhatloaisoibtn"class="btn btn-info" data-toggle="modal" data-target="#capnhaploaisoimodal">Cập Nhật Loại Sợi</button>
                         <!--Modal cua cap nhat loai soi-->
                         <div class="modal fade" id="capnhaploaisoimodal" role="dialog">
                             <div class="vertical-helper">

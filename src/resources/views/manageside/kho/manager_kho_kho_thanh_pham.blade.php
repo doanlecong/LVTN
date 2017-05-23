@@ -183,7 +183,6 @@
                             
                         </div>
                         
-                        <button type="button" id="capnhatcaythanhphambtn"class="btn btn-info" data-toggle="modal" data-target="#capnhatcaythanhphammodal">Cập Nhật Cây Thành Phẩm</button>
                         <!--Modal cua cap nhat loai soi-->
                         <div class="modal fade" id="capnhatcaythanhphammodal" role="dialog">
                             <div class="vertical-helper">

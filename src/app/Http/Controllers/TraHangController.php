@@ -70,9 +70,48 @@ class TraHangController extends Controller
         foreach ($dsCayVai as $key=>$cv) {
             //cập nhật tình trạng cho cây vải thành phẩm = bị trả lại
             $cv->tinh_trang = 'Bị Trả Lại';
-            //cập nhật công nợ: hoàn lại tiền cho khách hàng (giảm công nợ)
 
-            
+
+            //cập nhật công nợ: hoàn lại tiền cho khách hàng (giảm công nợ)
+            $kh = KhachHang::find($khachhang->id);
+
+            // tính tổng tiền khách đã mua hàng
+            $tien_mua = 0;
+            $list_dh = $kh->don_hang_khach_hangs;
+            foreach ($list_dh as $dh) {
+                $tong_tien_don_hang = 0;
+
+                $list_hdx = $dh->hoa_don_xuats;
+                foreach ($list_hdx as $hdx) {
+                    $list_cv = $hdx->cay_vai_thanh_phams;
+                    foreach ($list_cv as $cv) {
+                        if ($cv->tinh_trang == 'Đã Xuất') {
+                            $tong_tien_don_hang += $cv->so_met * $cv->don_gia;
+                        }
+                    }
+                }
+
+                if ($dh->chiet_khau == null) {
+                    $dh->chiet_khau = 0;
+                    $dh->save();
+                }
+                $tien_mua += $tong_tien_don_hang * (100 - $dh->chiet_khau)/100;
+            }
+
+            //tính tổng tiền khách đã thanh toán
+            $tien_thanh_toan = 0;
+            foreach ($kh->thanh_toans as $tt) {
+                $tien_thanh_toan += $tt->so_tien;
+            }
+
+            //công nợ = tiền mua - thanh toán
+            $khachhang->cong_no = max( 0, $tien_mua - $tien_thanh_toan );
+            $du_tai_khoan = max( 0, $tien_thanh_toan - $tien_mua );
+            if ($du_tai_khoan > 0) $khachhang->ghi_chu = strval($du_tai_khoan);
+            else $khachhang->ghi_chu = null;
+            $khachhang->save();
+
+
             //cập nhật lại tình trạng đơn hàng (thường sẽ là đang giao)
             $dh = $cv->hoa_don_xuat->don_hang_khach_hang;
             $tong_so_met = 0;

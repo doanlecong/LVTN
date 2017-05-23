@@ -166,7 +166,6 @@
                             
                         </div>
                         
-                        <button type="button" id="capnhatphieuxuatsoibtn"class="btn btn-info" data-toggle="modal" data-target="#capnhapphieuxuatsoimodal">Cập Nhật Phiếu Xuất Sợi</button>
                         <!--Modal cua cap nhat loai soi-->
                         <div class="modal fade" id="capnhapphieuxuatsoimodal" role="dialog">
                             <div class="vertical-helper">
@@ -266,7 +265,6 @@
                             </div>
                             
                         </div>
-                        <span class="label-info pull-right ">Cập nhật lần cuối: </h4>
                     </div>
                    
                 </li>

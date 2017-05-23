@@ -51,7 +51,11 @@ class KhachHangController extends Controller
 
             //công nợ = tiền mua - thanh toán
             $khachhang->cong_no = max( 0, $tien_mua - $tien_thanh_toan );
-            $khachhang->du_tai_khoan = max( 0, $tien_thanh_toan - $tien_mua );
+            $du_tai_khoan = max( 0, $tien_thanh_toan - $tien_mua );
+            if ($du_tai_khoan > 0) $khachhang->ghi_chu = strval($du_tai_khoan);
+            else $khachhang->ghi_chu = null;
+            $khachhang->save();
+            $khachhang->du_tai_khoan = $du_tai_khoan;
         }
 
         return view('manageside.banhang.khachhang')->withList_khachhang($list_khachhang);

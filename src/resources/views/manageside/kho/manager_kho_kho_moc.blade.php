@@ -178,7 +178,6 @@
                             
                         </div>
                         
-                        <button type="button" id="capnhatcaymocbtn"class="btn btn-info" data-toggle="modal" data-target="#capnhatcaymocmodal">Cập Nhật Cây Mộc</button>
                         <!--Modal cua cap nhat loai soi-->
                         <div class="modal fade" id="capnhatcaymocmodal" role="dialog">
                             <div class="vertical-helper">
@@ -277,7 +276,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 
-                                                <button type="submit" class="btn btn-large btn-block btn-warning">Thêm</button>
+                                                <button type="submit" class="btn btn-large btn-block btn-warning">Cập nhật</button>
                                                 
                                                 <button type="button" class="btn btn-large btn-block btn-default" data-dismiss="modal">Đóng</button>
                                             </div>
@@ -287,7 +286,6 @@
                             </div>
                             
                         </div>
-                        <span class="label-info pull-right ">Cập nhật lần cuối: </h4>
                     </div>
                 
                 </li>
