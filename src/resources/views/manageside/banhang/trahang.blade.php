@@ -83,7 +83,6 @@
                             <th>Khổ</th>
                             <th>Số mét</th>
                             <th>Đơn giá</th>
-                            <th>Kho</th>
                             <th>Ngày giờ trả lại</th>
                         </tr>
                     </thead>
@@ -102,8 +101,7 @@
                                 <td>{{ $it->kich_co }}</td>
                                 <td>{{ $it->so_met }}</td>
                                 <td>{{ $it->don_gia }}</td>
-                                <td>{{ $it->kho->id }}</td>
-                                <td>{{ $it->ngay_gio_tra_lai }}</td>
+                                <td>{{ $it->created_at }}</td>
                             </tr>
                         @endforeach
                     </tbody>

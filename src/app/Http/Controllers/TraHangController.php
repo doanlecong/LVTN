@@ -54,18 +54,28 @@ class TraHangController extends Controller
         $dsCayVai = CayVaiThanhPham::find($request->cayvai);
         $dsCayVaiTraLai = [];
 
-        foreach ($dsCayVai as $key->$cv) {
+        foreach ($dsCayVai as $key=>$cv) {
             $cvtl = new CayVaiThanhPhamTraLai;
             $dsCayVaiTraLai[$key] = $cvtl;
 
             $cvtl->hoa_don_xuat_id = $cv->hoa_don_xuat_id;
             $cvtl->cay_vai_thanh_pham_id = $cv->id;
             $cvtl->kich_co = $cv->kich_co;
-            $cvtl->so_met = $cv->kich_co;
-            $cvtl->don_gia = $cv->kich_co;
-            $cvtl->loai_vai_id = $cv->kich_co;
-            $cvtl->mau_id = $cv->kich_co;
+            $cvtl->so_met = $cv->so_met;
+            $cvtl->don_gia = $cv->don_gia;
+            $cvtl->loai_vai_id = $cv->loai_vai_id;
+            $cvtl->mau_id = $cv->mau_id;
+        }
+
+        foreach ($dsCayVai as $key=>$cv) {
+            //cập nhật tình trạng cho cây vải thành phẩm = bị trả lại
+            $cv->tinh_trang = 'Bị Trả Lại';
+            //cập nhật công nợ: hoàn lại tiền cho khách hàng (giảm công nợ)
             
+            //cập nhật lại tình trạng đơn hàng (thường sẽ là đang giao)
+
+            $dsCayVaiTraLai[$key]->save();
+            $cv->save();
         }
 
         \Session::flash('success', 'Trả lại hàng thành công!');
