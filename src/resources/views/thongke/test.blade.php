@@ -51,6 +51,10 @@
 @section('content')
 <!-- Chart.js -->
 <script src="/js/chart/Chart.min.js"></script>
+<!-- Chart.js plugin show labels -->
+<script src="/js/chart/Chart.PieceLabel.min.js"></script>
+<!-- Chart.js my configs -->
+<script src="/js/chart/myConfigs.js"></script>
 
 <div style='width:200px; height:200px;'><canvas id="myChart" width="400" height="400"></canvas></div>
 <script>
@@ -121,16 +125,23 @@ var data = {
             backgroundColor: [
                 '#546E7A', '#8E24AA', '#B0BEC5', '#009688', '#42A5F5', '#AFB42B', '#B71C1C', '#6D4C41'
             ],
+            hoverBorderColor: [
+                '#546E7A', '#8E24AA', '#B0BEC5', '#009688', '#42A5F5', '#AFB42B', '#B71C1C', '#6D4C41'
+            ],
         }]
 };
 var myChart2 = new Chart(ctx, {
     type: 'pie',
     data: data,
     options: {
+        tooltips: myTooltips,
+        elements: myElements,
+        pieceLabel: myPieceLabel,
         legend: {
             display: true,
             position: 'bottom',
         },
+
         title: {
             display: true,
             text: 'Số cây vải theo loại vải',

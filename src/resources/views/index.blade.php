@@ -22,7 +22,7 @@
 
     <!-- Custom Fonts -->
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!--Jquery là phải dat dau trang đe laod duoc ok !!-->
+    <!--Jquery là phải đặt đầu trang để load được ok !!-->
     <script src="/js/jquery.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
