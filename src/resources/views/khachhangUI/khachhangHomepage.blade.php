@@ -13,14 +13,88 @@
   <link href="css/style.css" rel="stylesheet">
   <link href="css/themify-icons.css" rel="stylesheet">
   <link href='css/dosis-font.css' rel='stylesheet' type='text/css'>
+  <link href="/css/nprogress/nprogress.css" rel="stylesheet">
+  <script src="/js/nprogress.js"></script>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
-    </head>
+  <style>
+      #inputsearch{
+        width: 150px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color:white;
+        background-image: url('images/searchicon.png');
+        background-position: 10px 10px; 
+        background-repeat: no-repeat;
+        padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+      }
+      #inputsearch:focus{
+        width:500px;
+      }
+  </style>
+</head>
     <body id="page-top" data-spy="scroll" data-target=".side-menu">
+      <nav class="navbar navbar-default">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">ABCXYZ</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <form class="navbar-form navbar-left">
+                <!--<div class="form-group">-->
+                  <!--<input type="text" class="form-control" placeholder="Search">-->
+                  <input type="text" id="inputsearch" name="search"  class="form-control" placeholder="Search..">
+                <!--</div>-->
+              </form>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{url('/loginKhachHang')}}">Đăng Nhập</a></li>
+                <!--<li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
+                </li>-->
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+      </nav>
       <nav class="side-menu">
         <ul>
           <li class="hidden active">
@@ -34,19 +108,19 @@
           </li>
           <li>
             <a href="#speakers" class="page-scroll">
-              <span class="menu-title">Speakers</span>
+              <span class="menu-title">Lý Do Chọn Mua</span>
               <span class="dot"></span>
             </a>
           </li>
           <li>
             <a href="#tickets" class="page-scroll">
-              <span class="menu-title">Buy Tickets</span>
+              <span class="menu-title">Danh Mục Sản Phẩm</span>
               <span class="dot"></span>
             </a>
           </li>
           <li>
             <a href="#schedule" class="page-scroll">
-              <span class="menu-title">Schedule</span>
+              <span class="menu-title">Liên Hệ</span>
               <span class="dot"></span>
             </a>
           </li>
@@ -56,15 +130,17 @@
         <!-- Start: Header -->
         <div class="row hero-header" id="home">
           <div class="col-md-7">
-            <img src="images/meetup-logo.png" class="logo">
-            <h1>Attend the most awaited Conference of 2015</h1>
-            <h3>to start you up with your business!</h3>
-            <h4>20<sup>th</sup> to 22<sup>nd</sup>  October, 2015</h4>
-            <a href="#" class="btn btn-lg btn-red">Buy Tickets Now <span class="ti-arrow-right"></span></a>
+            <img src="images/logo.png" class="logo">
+            <h1>Công Ty Cổ Phần Cung Cấp Vải ABCXYZ</h1>
+            <h3>Chào mừng bạn !</h3>
+            <div id="ngaythang">
+              <!--<h4>17<sup>th</sup>  May, 2017</h4>-->
+            </div>
+            <a href="#" class="btn btn-lg btn-red">Mua Vải Ngay<span class="ti-arrow-right"></span></a>
 
           </div>
           <div class="col-md-5 hidden-xs">
-            <img src="images/rocket.png" class="rocket animated bounce">
+            <img src="images/logo.png" class="rocket animated bounce">
           </div>
         </div>
         <!-- End: Header -->
@@ -72,32 +148,32 @@
       <div class="container">
         <!-- Start: Desc -->
         <div class="row me-row content-ct">
-          <h2 class="row-title">Why This Event Is Super Cool?</h2>
+          <h2 class="row-title">Những Lý Do Mà Bạn Nên Mua Vải Của Công Ty Chúng Tôi</h2>
           <div class="col-md-4 feature">
             <span class="ti-ticket"></span>
-            <h3>Buy Early Bird Tickets</h3>
-            <p>Super cool discounts if you purchase early bird tickets now. Limited tickets available with some awesome perks and goodies!</p>
+            <h3>Vải Được Sản Xuất Với Công Nghệ ABCSDD</h3>
+            <p>Với Công Nghệ ABCSDD , vải sẽ cho chất lượng tốt bền màu .</p>
           </div>
           <div class="col-md-4 feature">
             <span class="ti-microphone"></span>
-            <h3>Expert Speakers</h3>
-            <p>Best in class expert speakers who have extensive knowledge of the topic. All speakers are curated by the panel of experts.</p>
+            <h3>An Toàn Với Cả Da Nhạy Cảm</h3>
+            <p>Quy Trình Sản Xuất Không Sử Dụng Bất Kỳ Chất Hóa Học Nào Có Khả Năng Gây Hại Cho Con Người </p>
           </div>
           <div class="col-md-4 feature">
             <span class="ti-world"></span>
-            <h3>People around the globe!</h3>
-            <p>Meet the people attending this event around the globe. This will be the best opportunity to meet and greet people from your industry.</p>
+            <h3>Sản Phẩm Đã Được Nhiều Nơi Ưa Chuộng</h3>
+            <p>Trong Năm 2016 , Công Ty Chúng Tôi Đã Xuất Sản Phẩm Đến 23 Quốc Gia của 5 Châu Lục .</p>
           </div>
         </div>
         <!-- End: Desc -->
 
         <!-- Start: Speakers -->
         <div class="row me-row content-ct speaker" id="speakers">
-          <h2 class="row-title">Meet the Speakers</h2>
+          <h2 class="row-title">Sản Phẩm Công Ty Sản Xuất!!</h2>
           <div class="col-md-4 col-sm-6 feature">
-            <img src="images/speaker-1.png" class="speaker-img">
-            <h3>Simon Collins</h3>
-            <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things...</p>
+            <img src="images/cotton-fabric.png" class="speaker-img">
+            <h3>Vải Cotton</h3>
+            <p> Vải cotton được tổng hợp được làm từ nguyên liệu thiên nhiên trong đó nguyên liệu chính là sợi bông và các chất hóa học tạo thành, cotton đang được sử dụng rộng rãi</p>
             <ul class="speaker-social">
               <li><a href="#"><span class="ti-facebook"></span></a></li>
               <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
@@ -105,9 +181,9 @@
             </ul>
           </div>
           <div class="col-md-4 col-sm-6 feature">
-            <img src="images/speaker-2.png" class="speaker-img">
-            <h3>Stephanie Troeth</h3>
-            <p>Stephie is a user experience researcher and designer. In over 15 years of working on the web, she has worn many hats, including a product lead for a tech startup in publishing...</p>
+            <img src="images/cvc-fabric.png" class="speaker-img">
+            <h3>Vải CVC</h3>
+            <p>CVC” là chữ viết tắt tiếng Anh  “Chief Value of Cotton”, tạm dịch là “Xơ bông giá trị cao”. Vải hỗn hợp của xơ polyester với xơ bông, trong đó tỷ lệ thành phần xơ bông trong sợi.</p>
             <ul class="speaker-social">
               <li><a href="#"><span class="ti-facebook"></span></a></li>
               <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
@@ -115,9 +191,9 @@
             </ul>
           </div>
           <div class="col-md-4 col-sm-6 feature">
-            <img src="images/speaker-3.png" class="speaker-img">
-            <h3>Harry Roberts</h3>
-            <p>Harry is a freelance designer, developer, writer, speaker and front-end architect from the UK, previously working as Senior UI Developer for Sky. He Tweets at...</p>
+            <img src="images/kaki-fabric.png" class="speaker-img">
+            <h3>Vải Kaki</h3>
+            <p>Vải kaki thông thường được làm từ cotton 100%. Tuy nhiên trên thị trường còn có một loại vải kaki khác chứa thành phần sợi tổng hợp được đan chéo với sợi cotton.</p>
             <ul class="speaker-social">
               <li><a href="#"><span class="ti-facebook"></span></a></li>
               <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
@@ -125,9 +201,9 @@
             </ul>
           </div>
           <div class="col-md-4 col-sm-6 feature">
-            <img src="images/speaker-4.png" class="speaker-img">
-            <h3>Geri Coady</h3>
-            <p>Harry is a freelance designer, developer, writer, speaker and front-end architect from the UK, previously working as Senior UI Developer for Sky. He Tweets at...</p>
+            <img src="images/poly-fabric.png" class="speaker-img">
+            <h3>Vải Polyester</h3>
+            <p>Vải Polyester là loại vải được dệt hoàn toàn bằng 100% polyester Ưu điểm: giá thành sản phẩm thấp, hình in sắc nét và khó bay màu, học sinh, sinh viên ưa chuộng.</p>
             <ul class="speaker-social">
               <li><a href="#"><span class="ti-facebook"></span></a></li>
               <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
@@ -135,9 +211,9 @@
             </ul>
           </div>
           <div class="col-md-4 col-sm-6 feature">
-            <img src="images/speaker-5.png" class="speaker-img">
-            <h3>Andy Budd</h3>
-            <p>Harry is a freelance designer, developer, writer, speaker and front-end architect from the UK, previously working as Senior UI Developer for Sky. He Tweets at...</p>
+            <img src="images/tc-fabric.png" class="speaker-img">
+            <h3>Vải TC</h3>
+            <p>Thành phần gồm 35 % xơ cotton & 65% xơ PE. Cho cảm giác ngoài độ mềm mại của vải, vẫn còn độ “đứng vải” của PE>Là chất liệu trung bình khi làm áo thun đa phần sử dụng.</p>
             <ul class="speaker-social">
               <li><a href="#"><span class="ti-facebook"></span></a></li>
               <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
@@ -145,9 +221,9 @@
             </ul>
           </div>
           <div class="col-md-4 col-sm-6 feature">
-            <img src="images/speaker-6.png" class="speaker-img">
-            <h3>Christian Lauke</h3>
-            <p>Harry is a freelance designer, developer, writer, speaker and front-end architect from the UK, previously working as Senior UI Developer for Sky. He Tweets at...</p>
+            <img src="images/lua-fabric.png" class="speaker-img">
+            <h3>Vải Lụa</h3>
+            <p>Lụa là một loại vải mịn, mỏng được dệt bằng tơ. Loại lụa tốt nhất được dệt từ tơ tằm. Người ta nuôi tằm lấy tơ xe sợi dệt thành lụa. Đây là một nghề có từ rất lâu đời.</p>
             <ul class="speaker-social">
               <li><a href="#"><span class="ti-facebook"></span></a></li>
               <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
@@ -159,7 +235,7 @@
       </div>
 
       <!-- Start: Tickets -->
-      <div class="container-fluid tickets" id="tickets">
+      <!--<div class="container-fluid tickets" id="tickets">
         <div class="row me-row content-ct">
           <h2 class="row-title">Buy Tickets</h2>
           <div class="col-md-4 col-sm-6 col-md-offset-2">
@@ -175,22 +251,22 @@
             <a href="#" class="btn btn-lg btn-red">Buy <small>(42 remaining)</small></a>
           </div>
         </div>
-      </div>
+      </div>-->
       <!-- End: Tickets -->
 
       <!-- Start: Schedule -->
-      <div class="container">
+      <!--<div class="container">
         <div class="row me-row schedule" id="schedule">
           <h2 class="row-title content-ct">Event Schedule</h2>
           <div class="col-md-12">
-            <!-- Nav tabs -->
+            
             <ul class="nav nav-tabs" role="tablist">
               <li role="presentation" class="active"><a href="#day-1" aria-controls="home" role="tab" data-toggle="tab">Day 01 <small class="hidden-xs">(20<sup>th</sup>, October)</small></a></li>
               <li role="presentation"><a href="#day-2" aria-controls="profile" role="tab" data-toggle="tab">Day 02 <small class="hidden-xs">(21<sup>st</sup>, October)</small></a></li>
               <li role="presentation"><a href="#day-3" aria-controls="messages" role="tab" data-toggle="tab">Day 03 <small class="hidden-xs">(22<sup>nd</sup>, October)</small></a></li>
             </ul>
 
-            <!-- Tab panes -->
+            
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane fade in active" id="day-1">
                 <div class="row">
@@ -375,17 +451,17 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
       <!-- End: Schedule -->
 
       <!-- Start: Footer -->
       <div class="container-fluid footer">
         <div class="row contact">
           <div class="col-md-6 contact-form">
-            <h3 class="content-ct"><span class="ti-email"></span> Contact Form</h3>
+            <h3 class="content-ct"><span class="ti-email"></span> Liên Hệ </h3>
             <form class="form-horizontal" data-toggle="validator" role="form">
               <div class="form-group">
-                <label for="name" class="col-sm-3 control-label">Name<sup>*</sup></label>
+                <label for="name" class="col-sm-3 control-label">Tên<sup>*</sup></label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" id="name" placeholder="John Doe" required>
                   <div class="help-block with-errors pull-right"></div>
@@ -401,7 +477,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="message" class="col-sm-3 control-label">Your Message<sup>*</sup></label>
+                <label for="message" class="col-sm-3 control-label">Tin Nhắn<sup>*</sup></label>
                 <div class="col-sm-9">
                   <textarea id="message" class="form-control" rows="3" required></textarea>
                   <div class="help-block with-errors pull-right"></div>
@@ -410,7 +486,7 @@
               </div>
               <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9">
-                  <button type="submit" id="submit" name="submit" class="btn btn-yellow pull-right">Send <span class="ti-arrow-right"></span></button>
+                  <button type="submit" id="submit" name="submit" class="btn btn-yellow pull-right">Gửi <span class="ti-arrow-right"></span></button>
                 </div>
               </div>
             </form>
@@ -426,7 +502,7 @@
         </div>
         <div class="row footer-credit">
           <div class="col-md-6 col-sm-6">
-            <p>&copy; 2015, <a href="http://www.designerdada.com">DesignerDada.com</a> | All rights reserved.</p>
+            <p>&copy; 2017, All rights reserved.</p>
           </div>
           <div class="col-md-6 col-sm-6"> 
             <ul class="footer-menu">
@@ -455,6 +531,35 @@
 
       ga('create', 'UA-29231762-2', 'auto');
       ga('send', 'pageview');
+      function hienthingaythang(){
+        var month = new Array();
+        month[0] = "January";
+        month[1] = "February";
+        month[2] = "March";
+        month[3] = "April";
+        month[4] = "May";
+        month[5] = "June";
+        month[6] = "July";
+        month[7] = "August";
+        month[8] = "September";
+        month[9] = "October";
+        month[10] = "November";
+        month[11] = "December";
+        var date = new Date();
+        var ngay = date.getDate();
+        var thang = month[date.getMonth()];
+        var nam = date.getFullYear();
+        $("#ngaythang").append("<h4>"+ngay+"<sup>th</sup>  "+thang+" , "+nam+"</h4>");
+      };
+      function cal2function(){
+        NProgress.start();
+        NProgress.set(0.4);
+        NProgress.set(0.4);            
+        NProgress.inc(); 
+        NProgress.done();
+        hienthingaythang();
+      }
+      window.onload= cal2function;
       </script>
     </body>
     </html>
