@@ -93,8 +93,8 @@
             <div class="panel with-nav-tabs panel-primary">
                 <div class="panel-heading">
                         <ul class="nav nav-tabs">
-                            <li class="active" id="tabli1"><a href="#tab1primary" data-toggle="tab"><h4>Thanh Toán </h4></a></li>
-                            <li id="tabli2"><a href="#tab2primary" data-toggle="tab"><h4>Cập Nhật Thanh Toán </h4></a></li>
+                            <li class="active" id="tabli1"><a href="#tab1primary" data-toggle="tab"><h4>Chi Công Ty</h4></a></li>
+                            <li id="tabli2"><a href="#tab2primary" data-toggle="tab"><h4>Cập Nhật Chi Công Ty</h4></a></li>
                         </ul>
                 </div>
                 <div class="panel-body">
@@ -103,7 +103,7 @@
                             <ol class="breadcrumb">
                                 <li class="active">
                                     <div class ="row ">
-                                        <h3 class="panel-title">Thông tin Thanh Toán </h3>
+                                        <h3 class="panel-title">Thông tin Chi Công Ty</h3>
                                     </div>
                                 </li> 
                             </ol>
@@ -114,27 +114,27 @@
                                         
                                         <div class="panel panel-primary">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Lựa Chọn Khách Hàng </h3>
+                                                    <h3 class="panel-title">Lựa Chọn Nhà Cung Cấp </h3>
                                                 </div>
                                                 <div class="panel-body">
-                                                    {{Form::open(['url'=>'manage_ban_hang_thanh_toan','method'=>'POST', 'class'=> 'form-group' ,'id'=>'thanhtoanform','onsubmit'=>'return validateForm();'])}}
+                                                    {{Form::open(['url'=>'manage_ban_hang_chi_cong_ty','method'=>'POST', 'class'=> 'form-group' ,'id'=>'chiform','onsubmit'=>'return validateForm();'])}}
                                                         <div class="modal-body">
                                                             <div class="form-group">
-                                                                {{Form::label('khachhang','Khách Hàng :')}}
+                                                                {{Form::label('nhacungcap','Nhà Cung Cấp :')}}
                                                     
-                                                                <select name="khachhang" id="khachhang" class="form-control" required="required">
-                                                                    @if($listkhachhang->count() !=0)
-                                                                        <option value="">Mời Chọn Khách Hàng </option>
-                                                                        @foreach($listkhachhang as $khachhang)
-                                                                            <option value="{{$khachhang->id}}">{{$khachhang->id}} -- {{$khachhang->ten}} -- Công Nợ Hiện Tại : {{$khachhang->cong_no}} @if($khachhang->ghi_chu !=NULL) --- Dư Tài Khoản :{{$khachhang->ghi_chu}}  @endif</option>
+                                                                <select name="nhacungcap" id="nhacungcap" class="form-control" required="required">
+                                                                    @if($listnhacungcap->count() !=0)
+                                                                        <option value="">Mời Chọn Nhà Cung Cấp</option>
+                                                                        @foreach($listnhacungcap as $nhacungcap)
+                                                                            <option value="{{$nhacungcap->id}}">{{$nhacungcap->id}} -- {{$nhacungcap->ten}} -- Công Nợ Hiện Tại : {{$nhacungcap->cong_no}} @if($nhacungcap->ghi_chu !=NULL) --- Dư Tài Khoản :{{$nhacungcap->ghi_chu}}  @endif</option>
                                                                         @endforeach
                                                                     @else
-                                                                        <option value="">Không có Khách Hàng Nào trong Hệ thống</option>
+                                                                        <option value="">Không có Nhà Cung Cấp Nào trong Hệ thống</option>
                                                                     @endif
                                                                 </select>
                                                             </div>
                                                             <hr>
-                                                            <h5 class="text-danger"><strong>Thông tin Thanh Toán</strong> </h5>
+                                                            <h5 class="text-danger"><strong>Thông tin Chi </strong> </h5>
                                                             <div class="form-group">
                                                                 {{Form::label('sotien','Số Tiền(VND) :',['class'=>'text-danger','id'=>'lable1'])}}
                                                                 {{Form::number('sotien',null,['class'=>'form-control','required'=>'required','style'=>'color:red;'])}}
@@ -191,29 +191,29 @@
                                 </li> 
                             </ol>
                             <div class="panel-body">
-                                <div class="row" id="capnhatthanhtoan">
+                                <div class="row" id="capnhatchi">
                                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                         
                                         <div class="panel panel-primary" >
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Lựa Chọn Thông Tin Khách Hàng</h3>
+                                                    <h3 class="panel-title">Lựa Chọn Thông Tin Nhà Cung Cấp </h3>
                                                 </div>
                                                 <div class="panel-body" >
                                                     <div class="form-group">
-                                                        {{Form::label('khachhang','Khách Hàng : ')}}
-                                                        <select name="khachhang" id="khachhang" class="form-control" required="required">
-                                                            <option value="">Mời Chọn Khách hàng</option>
-                                                            @foreach($listkhachhang as $khachhang)
-                                                                <option value="{{$khachhang->id}}">{{$khachhang->id}} -- Tên : {{$khachhang->ten}} -- Công Nợ Hiện Tại : {{$khachhang->cong_no}} @if($khachhang->ghi_chu !=NULL) -- Dư Tài Khoản :{{$khachhang->ghi_chu}}  @endif</option>
+                                                        {{Form::label('nhacungcap','Nhà Cung Cấp : ')}}
+                                                        <select name="nhacungcap" id="nhacungcap" class="form-control" required="required">
+                                                            <option value="">Mời Chọn Nhà Cung Cấp</option>
+                                                            @foreach($listnhacungcap as $nhacungcap)
+                                                                <option value="{{$nhacungcap->id}}">{{$nhacungcap->id}} -- Tên : {{$nhacungcap->ten}} -- Công Nợ Hiện Tại : {{$nhacungcap->cong_no}} @if($nhacungcap->ghi_chu !=NULL) -- Dư Tài Khoản :{{$nhacungcap->ghi_chu}}  @endif</option>
                                                             @endforeach
                                                         </select>
                                                         
                                                     </div>
                                                      <div class="form-group">
-                                                        {{Form::label('danhsachthanhtoan','Các Đợt Thanh Toán : ')}}
+                                                        {{Form::label('danhsachchi','Các Đợt Chi Công Ty : ')}}
                                                         
-                                                        <select name="danhsachthanhtoan" id="danhsachthanhtoan" class="form-control" required="required">
-                                                            <option value="">Mời Chọn Khách Hàng Để Hiển Thị Danh Sách</option>
+                                                        <select name="danhsachchi" id="danhsachchi" class="form-control" required="required">
+                                                            <option value="">Mời Chọn Nhà Cung Cấp Để Hiển Thị Danh Sách</option>
                                                         </select>
                                                         
                                                     </div>
@@ -226,15 +226,15 @@
                                         
                                         <div class="panel panel-primary">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Chỉnh sửa thông tin đơi thanh toán được chọn <small>(Cập nhật lại thông tin  *** Chỉ Chỉnh Sửa Khi Có Sai Xót)</small></h3>
+                                                    <h3 class="panel-title">Chỉnh sửa thông tin đợt Chi được chọn <small>(Cập nhật lại thông tin  *** Chỉ Chỉnh Sửa Khi Có Sai Xót)</small></h3>
                                                 </div>
                                                 <div class="panel-body">
-                                                {{Form::open(['url'=>'','method'=>'PUT', 'class'=> 'form-group' ,'id'=>'capnhatthanhtoanform','onsubmit'=>'return validateForm1();'])}}
+                                                {{Form::open(['url'=>'','method'=>'PUT', 'class'=> 'form-group' ,'id'=>'capnhatchiform','onsubmit'=>'return validateForm1();'])}}
                                                     <div class="modal-body">
 
                                                         <div class="form-group">
-                                                            {{Form::label('thanhtoanid',' Mã Thanh Toán : ')}}
-                                                            {{Form::text('thanhtoanid',null,['class'=>'form-control','disabled'=>''])}}
+                                                            {{Form::label('chiid',' Mã Chi : ')}}
+                                                            {{Form::text('chiid',null,['class'=>'form-control','disabled'=>''])}}
                                                         </div>
                                                         <div class="form-group">
                                                             {{Form::label('sotienOld','Số Tiền Trước Đó : ',['id'=>'labelsotienOld'])}}
@@ -251,7 +251,7 @@
                                                     </div>
                                                     
                                                     <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-large btn-block btn-warning">Cập Nhật Thanh Toán</button>
+                                                        <button type="submit" class="btn btn-large btn-block btn-warning">Cập Nhật Thông Tin Chi Ngân</button>
                                                     </div>
                                                 {{Form::close()}}
                                                 </div>
@@ -410,24 +410,24 @@
             KetQua = KetQua.substring(1,2).toUpperCase()+ KetQua.substring(2);
             return KetQua;//.substring(0, 1);//.toUpperCase();// + KetQua.substring(1);
         }
-       $("#thanhtoanform #khachhang").change(function(){
+       $("#chiform #nhacungcap").change(function(){
             var id = $(this).val();
-            $("#thanhtoanform #sotien").val("");
-            $("#thanhtoanform #sotien1").val("");
+            $("#chiform #sotien").val("");
+            $("#chiform #sotien1").val("");
             $("#danhsachdonhang ul").empty();
             if(id!=""){
                 $.ajax({
                     method:"GET",
-                    url:'ajaxselectkhachhang/manage_ban_hang_thanh_toan/'+id,
+                    url:'ajaxselectnhacungcap/manage_ban_hang_chi_cong_ty/'+id,
                     success:function(data){
                         var lengthlist = data.length;
                         if(lengthlist != 0 ){
                             for(var i = 0 ; i < lengthlist ; i++ ){
-                                 $("#danhsachdonhang ul").append("<li class='list-group-item' style='border-color: blueviolet;'>Mã Đơn Hàng : "+data[i].id+" -- Loại Vải : "+data[i].loai_vai.ten+" -- Màu : "+data[i].mau.ten+" -- Tổng Số Mét : "+data[i].tong_so_met+" -- Chiết Khấu :"+data[i].chiet_khau+"% <span class='label label-info' style='font-size: 0.9em;'>Thành Tiền : "+data[i].tong_so_met*data[i].loai_vai.don_gia*(100-data[i].chiet_khau)/100+" VND</span></li>")
+                                 $("#danhsachdonhang ul").append("<li class='list-group-item' style='border-color: blueviolet;'>Mã Đơn Hàng : "+data[i].id+" -- Loại Sợi : "+data[i].loai_soi.ten+" -- Khối lượng đặt : "+data[i].khoi_luong+" kg</li>")
                             }
                         }else{  
 
-                            $("#danhsachdonhang ul").append("<h5 class='text-danger'><strong>Không Có Đơn Hàng Nào Thuộc Khách Hàng Đang Chọn<strong></h5>");
+                            $("#danhsachdonhang ul").append("<h5 class='text-danger'><strong>Không Có Đơn Hàng Nào Thuộc Nhà Cung Cấp Đang Chọn<strong></h5>");
                         }
                        
                     },
@@ -438,43 +438,43 @@
             }
             
        });
-       $("#thanhtoanform #sotien , #thanhtoanform #sotien1").change(function(){
-            var sotien  = $("#thanhtoanform #sotien").val();
+       $("#chiform #sotien , #chiform #sotien1").change(function(){
+            var sotien  = $("#chiform #sotien").val();
             console.log('1 :'+sotien );
-            var sotien1  = $("#thanhtoanform #sotien1").val();
+            var sotien1  = $("#chiform #sotien1").val();
             console.log('2 :'+sotien1 );
-            $("#thanhtoanform #lable1").text("Số Tiền(VND) : "+DocTienBangChu(sotien)+" Đồng");
-            $("#thanhtoanform #lable2").text("Số Tiền Xác Nhận(VND) : "+DocTienBangChu(sotien1)+" Đồng");
+            $("#chiform #lable1").text("Số Tiền(VND) : "+DocTienBangChu(sotien)+" Đồng");
+            $("#chiform #lable2").text("Số Tiền Xác Nhận(VND) : "+DocTienBangChu(sotien1)+" Đồng");
             
             if(sotien =="" || sotien1 ==""){
             $()
             }else if(sotien <= 0 ||sotien1 <= 0  ){
                 alert('Nhập Sai THông Tin');
-                $("#thanhtoanform #sotien").val("");
-                $("#thanhtoanform #sotien1").val("");
+                $("#chiform #sotien").val("");
+                $("#chiform #sotien1").val("");
             }else if(sotien!=sotien1){
                 alert('Không Trùng Khớp');
-                $("#thanhtoanform #sotien").val("");
-                $("#thanhtoanform #sotien1").val("");   
+                $("#chiform #sotien").val("");
+                $("#chiform #sotien1").val("");   
             }
        });
 
-       $("#capnhatthanhtoan #khachhang").change(function(){
+       $("#capnhatchi #nhacungcap").change(function(){
             var id = $(this).val();
-            $("#capnhatthanhtoan #danhsachthanhtoan").empty();
+            $("#capnhatchi #danhsachchi").empty();
             if(id != ""){
                 $.ajax({
                     method:"GET",
-                    url:'ajaxchangeKhachHang/manage_ban_hang_thanh_toan/'+id,
+                    url:'ajaxchangeNhacungcap/manage_ban_hang_thanh_toan/'+id,
                     success:function(data){
                         var lengthdata = data.length;
-                        $("#capnhatthanhtoan #danhsachthanhtoan").append("<option value=''>Mời Chọn Đợt Thanh Toán</option>");
+                        $("#capnhatchi #danhsachchi").append("<option value=''>Mời Chọn Đợt Chi Công Ty</option>");
                         if(lengthdata != 0){
                             for( var i = 0 ; i < lengthdata ; i++){
-                                $("#capnhatthanhtoan #danhsachthanhtoan").append("<option value='"+data[i].id+"'>"+data[i].id+" -- Số Tiền : "+data[i].so_tien+" -- Ngày Thanh Toán : "+data[i].ngay_gio+"</option>");
+                                $("#capnhatchi #danhsachchi").append("<option value='"+data[i].id+"'>"+data[i].id+" -- Số Tiền : "+data[i].so_tien+" -- Ngày Thanh Toán : "+data[i].ngay_gio+"</option>");
                             }
                         }else {
-                            $("#capnhatthanhtoan #danhsachthanhtoan").append("<option value=''>Không Có Đợi Thanh Toán Nào</option>");
+                            $("#capnhatchi #danhsachchi").append("<option value=''>Không Có Đợi Chi Công Ty Nào</option>");
                         }
                     },
                     fail:function(xhr){
@@ -483,18 +483,18 @@
                 });
             }
        });
-       $("#capnhatthanhtoan #danhsachthanhtoan").change(function(){
+       $("#capnhatchi #danhsachchi").change(function(){
             var id = $(this).val();
             if( id!= ""){
                 $.ajax({
                     method:"GET",
-                    url:"ajaxselectthanhtoan/manage_ban_hang_thanh_toan/"+id,
+                    url:"ajaxselectChicongty/manage_ban_hang_chi_cong_ty/"+id,
                     success:function(data){
                         console.log(data);
-                        $("#capnhatthanhtoanform").attr('action','manage_ban_hang_thanh_toan/'+data.id);
-                        $("#capnhatthanhtoanform #thanhtoanid").val(data.id);
-                        $("#capnhatthanhtoanform #sotienOld").val(data.so_tien);
-                        $("#capnhatthanhtoanform #labelsotienOld").text("Số Tiền Trước Đó : "+DocTienBangChu(data.so_tien) +" đồng");
+                        $("#capnhatchiform").attr('action','manage_ban_hang_chi_cong_ty/'+data.id);
+                        $("#capnhatchiform #chiid").val(data.id);
+                        $("#capnhatchiform #sotienOld").val(data.so_tien);
+                        $("#capnhatchiform #labelsotienOld").text("Số Tiền Trước Đó : "+DocTienBangChu(data.so_tien) +" đồng");
                         
                         
                         
@@ -506,24 +506,24 @@
             }
        });
 
-        $("#capnhatthanhtoanform #sotienNew , #capnhatthanhtoanform #sotienxacnhan").change(function(){
-            var sotien  = $("#capnhatthanhtoanform #sotienNew").val();
+        $("#capnhatchiform #sotienNew , #capnhatchiform #sotienxacnhan").change(function(){
+            var sotien  = $("#capnhatchiform #sotienNew").val();
             console.log('1 :'+sotien );
-            var sotien1  = $("#capnhatthanhtoanform #sotienxacnhan").val();
+            var sotien1  = $("#capnhatchiform #sotienxacnhan").val();
             console.log('2 :'+sotien1 );
-            $("#capnhatthanhtoanform #lable3").text("Số Tiền(VND) : "+DocTienBangChu(sotien)+" Đồng");
-            $("#capnhatthanhtoanform #lable4").text("Xác Nhận Số Tiền(VND) : "+DocTienBangChu(sotien1)+" Đồng");
+            $("#capnhatchiform #lable3").text("Số Tiền(VND) : "+DocTienBangChu(sotien)+" Đồng");
+            $("#capnhatchiform #lable4").text("Xác Nhận Số Tiền(VND) : "+DocTienBangChu(sotien1)+" Đồng");
             
             if(sotien =="" || sotien1 ==""){
                 $();
-            }else if(sotien <= 0 ||sotien1 <= 0  ){
+            }else if(sotien < 0 ||sotien1 < 0  ){
                 alert('Nhập Sai THông Tin');
-                $("#capnhatthanhtoanform #sotienNew").val("");
-                $("#capnhatthanhtoanform #sotienxacnhan").val("");
+                $("#capnhatchiform #sotienNew").val("");
+                $("#capnhatchiform #sotienxacnhan").val("");
             }else if(sotien!=sotien1){
                 alert('Không Trùng Khớp');
-                $("#capnhatthanhtoanform #sotienNew").val("");
-                $("#capnhatthanhtoanform #sotienxacnhan").val("");   
+                $("#capnhatchiform #sotienNew").val("");
+                $("#capnhatchiform #sotienxacnhan").val("");   
             }
        });
         function changeColor(abc){
@@ -540,7 +540,7 @@
             }
         }
         function validateForm(){
-            var so = $("#thanhtoanform #sotien").val();
+            var so = $("#chiform #sotien").val();
             if(so==0 ||so ==""){
                 alert("Số Tiền Nhập Sai !");
                 return false;
@@ -548,8 +548,8 @@
             return true;
         }
         function validateForm1(){
-            var so = $("#capnhatthanhtoanform #sotienNew").val();
-            if(so==0 ||so ==""){
+            var so = $("#capnhatchiform #sotienNew").val();
+            if( so ==""){
                 alert("Số Tiền Nhập Sai !");
                 return false;
             }
