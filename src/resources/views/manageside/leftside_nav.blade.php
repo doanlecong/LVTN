@@ -3,6 +3,16 @@
             <i class="fa fa-fw fa-dashboard"></i> Trang Khách Hàng <i class="fa fa-fw fa-caret-down pull-right"></i>
         </a>
    </li>
+   <li>
+        <a href="/khachHangDaDangnhap" data-toggle="collapse" data-target="#demo">
+            <i class="fa fa-fw fa-dashboard"></i> Trang Khách Hàng Đã Đăng Nhập <i class="fa fa-fw fa-caret-down pull-right"></i>
+        </a>
+   </li>
+    <li>
+        <a href="/loginKhachHang" data-toggle="collapse" data-target="#demo">
+            <i class="fa fa-fw fa-dashboard"></i> Trang Login Khách Hàng <i class="fa fa-fw fa-caret-down pull-right"></i>
+        </a>
+   </li>
    <li class="active">
         <!--<a href="{{url('/')}}"><i class="fa fa-fw fa-dashboard"></i> Quản Lý Kho</a>-->
         <a href="javascript:;" data-toggle="collapse" data-target="#demo">
@@ -74,7 +84,7 @@
                 <a href="{{url('/manage_ban_hang_thanh_toan')}}">Thanh Toán</a>
             </li>
             <li>
-                <a href="{{url('/tra_hang')}}">Trả Hàng</a>
+                <a href="{{url('/manage_ban_hang_chi_cong_ty')}}">Chi Công Ty</a>
             </li>
         </ul>
     </li>
