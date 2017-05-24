@@ -15,7 +15,17 @@ Route::get('/', function () {
     return view('manageside.kho.manager_kho');
 });
 
-Route::resource('khachhangUI','KhachHangUIController');
+Route::resource('/khachhangUI','KhachHangUIController');
+Route::get('khachHangDaDangnhap', function (){
+    return view('khachhangUI.LoggedKhachHang');
+});
+Route::get('getkh/{id}','KhachHangUIController@getKhAnDH');
+
+Route::resource('loginKhachHang','LoginKhachHangController');
+Route::get('logoutKhachHang','LoginKhachHangController@getLogout');
+Route::get('changeCustomerInfo','KhachHangUIController@changeCustomerInfo');
+Route::post('changeCustomerUserOrPass','KhachHangUIController@changeCustomUserOrPass');
+Route::post('changeCustomerInfoDetail','KhachHangUIController@changeCustomInfoDetail');
 // Route::get('manage_kho_loai_soi',function(){
     
 //     return view('manageside.manager_kho_loai_soi');
@@ -77,10 +87,6 @@ Route::get('ajax/manage_ban_hang_khach_hang/{id}','KhachHangController@getItemBy
 
 
 
-Route::resource('/tra_hang', 'TraHangController');
-Route::get('/ajax/tra_hang/danh_sach_cay_vai/', 'TraHangController@danhSachCayVaiAjax');
-
-
 
 Route::resource('/manage_ban_hang_don_hang','DonHangKhachHangController');
 Route::get('ajax/manage_ban_hang_don_hang_create','DonHangKhachHangController@createItemAjax');
@@ -93,6 +99,15 @@ Route::get('ajax/ban_hang/hoa_don_xuat/{id}','HoaDonXuatController@getItemByIdAj
 
 Route::resource('/manage_ban_hang_thanh_toan','ThanhToanController');
 Route::get('ajaxselectkhachhang/manage_ban_hang_thanh_toan/{id}','ThanhToanController@getListDonHangLienQuan');
+Route::get('ajaxchangeKhachHang/manage_ban_hang_thanh_toan/{id}','ThanhToanController@getListThanhToanBelongToKhach');
+Route::get('ajaxselectthanhtoan/manage_ban_hang_thanh_toan/{id}','ThanhToanController@getThanhToanRecordById');
+
+
+Route::resource('manage_ban_hang_chi_cong_ty','ChiCongTyController');
+Route::get('ajaxselectnhacungcap/manage_ban_hang_chi_cong_ty/{id}','ChiCongTyController@getListDonHangCongTy');
+Route::get('ajaxchangeNhacungcap/manage_ban_hang_thanh_toan/{id}','ChiCongTyController@getListChiCongTy');
+Route::get('ajaxselectChicongty/manage_ban_hang_chi_cong_ty/{id}','ChiCongTyController@getChiCongTyRecordById');
+
 //Admin end
 Route::get('/manage_san_xuat', function(){
     return view('manageside.manager_san_xuat');
@@ -104,5 +119,3 @@ Route::get('/manage_ban_hang',function(){
 Route::get('/manage_thong_ke',function (){
     return view('manageside.manager_thong_ke');
 });
-Route::get('thongke/test', 'ThongKeController@test');
-
